@@ -75,8 +75,8 @@ const I18N = {
     "why.2p": "Học trực tiếp từ Data Engineer, ML Engineer đang làm tại các công ty công nghệ và ngân hàng.",
     "why.3t": "Lộ trình cá nhân hóa",
     "why.3p": "Đầu vào kiểm tra trình độ, đầu ra là portfolio + review CV và luyện phỏng vấn.",
-    "why.4t": "Cộng đồng & việc làm",
-    "why.4p": "Kết nối tuyển dụng, giới thiệu việc làm và cộng đồng alumni hỗ trợ dài hạn.",
+    "why.4t": "Cộng đồng alumni",
+    "why.4p": "Cộng đồng alumni năng động, chia sẻ kinh nghiệm và cùng nhau học hỏi lâu dài.",
     "why.5t": "Học mọi lúc",
     "why.5p": "Lớp online tương tác + bản ghi trọn đời, lab dựng sẵn không cần cấu hình phức tạp.",
     "why.6t": "Công nghệ mới nhất",
@@ -116,8 +116,8 @@ const I18N = {
     "how.2p": "Kết hợp lý thuyết và lab thực hành, làm dự án thật cùng mentor.",
     "how.3t": "Xây portfolio",
     "how.3p": "Hoàn thiện các dự án end-to-end đưa lên GitHub, sẵn sàng khoe nhà tuyển dụng.",
-    "how.4t": "Luyện phỏng vấn & việc làm",
-    "how.4p": "Review CV, mock interview và kết nối cơ hội việc làm trong mạng lưới đối tác.",
+    "how.4t": "Luyện phỏng vấn",
+    "how.4p": "Review CV và luyện phỏng vấn (mock interview) để bạn tự tin ứng tuyển.",
 
     "mentors.kicker": "Đội ngũ giảng viên",
     "mentors.h2": "Học từ người đang làm nghề",
@@ -188,10 +188,10 @@ const I18N = {
     "faq.h2": "Câu hỏi thường gặp",
     "faq.1q": "Tôi chưa biết lập trình có học được không?",
     "faq.1a": "Được. Các khóa nền tảng bắt đầu từ số 0 với Python và SQL, mentor kèm sát trong giai đoạn đầu.",
-    "faq.2q": "Học online hay offline?",
-    "faq.2a": "Cả hai. Lớp online tương tác trực tiếp và có bản ghi trọn đời; lớp offline tại Hà Nội cho ai muốn học tập trung.",
-    "faq.3q": "Có hỗ trợ tìm việc không?",
-    "faq.3a": "Có. Chúng tôi review CV, luyện phỏng vấn và giới thiệu việc làm qua mạng lưới doanh nghiệp đối tác.",
+    "faq.2q": "Lớp học diễn ra thế nào?",
+    "faq.2a": "Toàn bộ lớp học diễn ra online, tương tác trực tiếp với giảng viên và có bản ghi trọn đời để xem lại bất cứ lúc nào.",
+    "faq.3q": "Có hỗ trợ chuẩn bị xin việc không?",
+    "faq.3a": "Có. Chúng tôi review CV và luyện phỏng vấn (mock interview) để bạn sẵn sàng và tự tin khi ứng tuyển.",
     "faq.4q": "Học phí thế nào?",
     "faq.4a": "Học phí tùy khóa, có nhiều ưu đãi cho sinh viên và đăng ký sớm. Liên hệ để nhận báo giá chi tiết.",
 
@@ -278,8 +278,8 @@ const I18N = {
     "why.2p": "Learn directly from Data & ML Engineers currently working at tech companies and banks.",
     "why.3t": "Personalized path",
     "why.3p": "We assess your level on entry; you leave with a portfolio, CV review and interview prep.",
-    "why.4t": "Community & jobs",
-    "why.4p": "Hiring connections, job referrals and a long-term alumni community that has your back.",
+    "why.4t": "Alumni community",
+    "why.4p": "An active alumni community that shares experience and keeps learning together.",
     "why.5t": "Learn anytime",
     "why.5p": "Live interactive classes + lifetime recordings, pre-built labs with zero painful setup.",
     "why.6t": "Modern stack",
@@ -320,7 +320,7 @@ const I18N = {
     "how.3t": "Build your portfolio",
     "how.3p": "Ship end-to-end projects to GitHub, ready to show any recruiter.",
     "how.4t": "Interview prep & jobs",
-    "how.4p": "CV review, mock interviews and job connections through our partner network.",
+    "how.4p": "CV review and mock interviews so you can apply with confidence.",
 
     "mentors.kicker": "Our instructors",
     "mentors.h2": "Learn from people doing the job",
@@ -391,10 +391,10 @@ const I18N = {
     "faq.h2": "Frequently asked questions",
     "faq.1q": "Can I join if I can't code yet?",
     "faq.1a": "Yes. Foundation courses start from zero with Python and SQL, with close mentor support early on.",
-    "faq.2q": "Online or on-site?",
-    "faq.2a": "Both. Live interactive online classes with lifetime recordings; on-site classes in Hanoi for focused learning.",
-    "faq.3q": "Do you help with jobs?",
-    "faq.3a": "Yes. We review CVs, run mock interviews and refer you through our partner company network.",
+    "faq.2q": "How are classes held?",
+    "faq.2a": "All classes are held online — live and interactive with your instructor, plus lifetime recordings to revisit anytime.",
+    "faq.3q": "Do you help with job prep?",
+    "faq.3a": "Yes. We review CVs and run mock interviews so you're ready and confident when you apply.",
     "faq.4q": "How does tuition work?",
     "faq.4a": "Tuition varies by course, with plenty of student and early-bird discounts. Contact us for a detailed quote.",
 
@@ -471,7 +471,7 @@ const DATA = {
       title: { vi: "Data Engineering Zero → Hero", en: "Data Engineering Zero → Hero" },
       tagline: { vi: "Dựng pipeline dữ liệu production từ số 0 — SQL, Spark, Kafka, dbt, Airflow và lakehouse.", en: "Build production data pipelines from scratch — SQL, Spark, Kafka, dbt, Airflow and lakehouse." },
       price: "7.900.000đ", old: "18.900.000đ", studentPrice: "5.900.000đ", weeks: 12, projects: 5,
-      level: { vi: "Cơ bản → Trung cấp", en: "Beginner → Intermediate" }, format: { vi: "Online / Offline (Hà Nội)", en: "Online / On-site (Hanoi)" },
+      level: { vi: "Cơ bản → Trung cấp", en: "Beginner → Intermediate" }, format: { vi: "Online", en: "Online" },
       outcomes: [
         { vi: "Thiết kế & vận hành pipeline batch và streaming", en: "Design & run batch and streaming pipelines" },
         { vi: "Mô hình hóa dữ liệu và xây lakehouse", en: "Data modeling and building a lakehouse" },
@@ -499,7 +499,7 @@ const DATA = {
       title: { vi: "Machine Learning thực chiến", en: "Practical Machine Learning" },
       tagline: { vi: "Từ hồi quy đến ensemble, feature engineering và đưa mô hình lên production.", en: "From regression to ensembles, feature engineering and shipping models to production." },
       price: "7.900.000đ", old: "19.900.000đ", studentPrice: "5.900.000đ", weeks: 10, projects: 4,
-      level: { vi: "Trung cấp", en: "Intermediate" }, format: { vi: "Online / Offline (Hà Nội)", en: "Online / On-site (Hanoi)" },
+      level: { vi: "Trung cấp", en: "Intermediate" }, format: { vi: "Online", en: "Online" },
       outcomes: [
         { vi: "Nắm quy trình ML end-to-end", en: "Master the end-to-end ML workflow" },
         { vi: "Feature engineering & xây pipeline", en: "Feature engineering & building pipelines" },
@@ -526,7 +526,7 @@ const DATA = {
       title: { vi: "AI Engineer: LLM & RAG", en: "AI Engineer: LLM & RAG" },
       tagline: { vi: "Xây ứng dụng LLM thực chiến — RAG, agent, fine-tuning, đánh giá và MLOps cho AI.", en: "Build real LLM apps — RAG, agents, fine-tuning, evaluation and MLOps for AI." },
       price: "8.900.000đ", old: "22.900.000đ", studentPrice: "6.700.000đ", weeks: 10, projects: 4,
-      level: { vi: "Nâng cao", en: "Advanced" }, format: { vi: "Online / Offline (Hà Nội)", en: "Online / On-site (Hanoi)" },
+      level: { vi: "Nâng cao", en: "Advanced" }, format: { vi: "Online", en: "Online" },
       outcomes: [
         { vi: "Xây RAG pipeline end-to-end", en: "Build an end-to-end RAG pipeline" },
         { vi: "Dùng embeddings & vector database", en: "Use embeddings & vector databases" },
@@ -607,7 +607,7 @@ const DATA = {
       title: { vi: "Deep Learning với PyTorch", en: "Deep Learning with PyTorch" },
       tagline: { vi: "Mạng nơ-ron, CNN, RNN, Transformer và huấn luyện mô hình trên GPU.", en: "Neural networks, CNNs, RNNs, Transformers and training on GPUs." },
       price: "8.900.000đ", old: "22.900.000đ", studentPrice: "6.700.000đ", weeks: 10, projects: 4,
-      level: { vi: "Nâng cao", en: "Advanced" }, format: { vi: "Online / Offline (Hà Nội)", en: "Online / On-site (Hanoi)" },
+      level: { vi: "Nâng cao", en: "Advanced" }, format: { vi: "Online", en: "Online" },
       outcomes: [
         { vi: "Hiểu & xây dựng mạng nơ-ron", en: "Understand & build neural networks" },
         { vi: "CNN cho thị giác máy tính", en: "CNNs for computer vision" },
@@ -856,24 +856,24 @@ const DATA = {
         { vi: "1 khóa chuyên sâu (ML / AI / DE)", en: "1 advanced course (ML / AI / DE)" },
         { vi: "4–5 dự án end-to-end", en: "4–5 end-to-end projects" },
         { vi: "Mentor 1-1 + review CV", en: "1-on-1 mentoring + CV review" },
-        { vi: "Cộng đồng alumni & việc làm", en: "Alumni & jobs community" }
+        { vi: "Cộng đồng alumni", en: "Alumni community" }
       ]
     },
     {
-      name: { vi: "Lộ trình đi làm", en: "Career Path" }, price: "19.900.000đ", old: "48.900.000đ",
+      name: { vi: "Lộ trình sự nghiệp", en: "Career Path" }, price: "19.900.000đ", old: "48.900.000đ",
       features: [
         { vi: "Trọn 3 khóa theo 1 nghề", en: "Full 3-course path for one role" },
         { vi: "Học lại miễn phí", en: "Free re-study" },
         { vi: "Luyện phỏng vấn chuyên sâu", en: "In-depth interview prep" },
-        { vi: "Giới thiệu việc làm tới khi có việc", en: "Job referrals until you're hired" }
+        { vi: "Định hướng nghề nghiệp & mạng lưới alumni", en: "Career guidance & alumni network" }
       ]
     }
   ],
 
   combos: [
-    { name: { vi: "Data Engineer đi làm", en: "Data Engineer, hired" }, includes: { vi: "DE Zero → Hero + MLOps + Career", en: "DE Zero → Hero + MLOps + Career" }, price: "18.900.000đ", old: "42.900.000đ" },
-    { name: { vi: "AI / ML Engineer đi làm", en: "AI / ML Engineer, hired" }, includes: { vi: "ML thực chiến + Deep Learning + AI LLM & RAG", en: "Practical ML + Deep Learning + AI LLM & RAG" }, price: "21.900.000đ", old: "54.700.000đ" },
-    { name: { vi: "Data Analyst đi làm", en: "Data Analyst, hired" }, includes: { vi: "Data Science nền tảng + SQL/BI + Career", en: "Data Science Foundations + SQL/BI + Career" }, price: "12.900.000đ", old: "29.900.000đ" }
+    { name: { vi: "Lộ trình Data Engineer", en: "Data Engineer path" }, includes: { vi: "DE Zero → Hero + MLOps + Career", en: "DE Zero → Hero + MLOps + Career" }, price: "18.900.000đ", old: "42.900.000đ" },
+    { name: { vi: "Lộ trình AI / ML Engineer", en: "AI / ML Engineer path" }, includes: { vi: "ML thực chiến + Deep Learning + AI LLM & RAG", en: "Practical ML + Deep Learning + AI LLM & RAG" }, price: "21.900.000đ", old: "54.700.000đ" },
+    { name: { vi: "Lộ trình Data Analyst", en: "Data Analyst path" }, includes: { vi: "Data Science nền tảng + SQL/BI + Career", en: "Data Science Foundations + SQL/BI + Career" }, price: "12.900.000đ", old: "29.900.000đ" }
   ],
 
   // Student-friendly offers & discounts (stackable rules described per card)
@@ -891,10 +891,10 @@ const DATA = {
   schedule: [
     { course: { vi: "Data Engineering Zero → Hero", en: "Data Engineering Zero → Hero" }, start: "15/07/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T3 · T5 — 19:30", en: "Tue · Thu — 7:30 PM" }, seats: { vi: "Còn 6 chỗ", en: "6 seats left" }, level: "open" },
     { course: { vi: "Machine Learning thực chiến", en: "Practical Machine Learning" }, start: "22/07/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T7 · CN — 09:00", en: "Sat · Sun — 9:00 AM" }, seats: { vi: "Còn 4 chỗ", en: "4 seats left" }, level: "open" },
-    { course: { vi: "AI Engineer: LLM & RAG", en: "AI Engineer: LLM & RAG" }, start: "05/08/2026", mode: { vi: "Offline (Hà Nội)", en: "On-site (Hanoi)" }, time: { vi: "T2 · T4 — 19:00", en: "Mon · Wed — 7:00 PM" }, seats: { vi: "Còn 8 chỗ", en: "8 seats left" }, level: "open" },
+    { course: { vi: "AI Engineer: LLM & RAG", en: "AI Engineer: LLM & RAG" }, start: "05/08/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T2 · T4 — 19:00", en: "Mon · Wed — 7:00 PM" }, seats: { vi: "Còn 8 chỗ", en: "8 seats left" }, level: "open" },
     { course: { vi: "Data Science nền tảng", en: "Data Science Foundations" }, start: "12/08/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T3 · T5 — 19:30", en: "Tue · Thu — 7:30 PM" }, seats: { vi: "Sắp đầy · 2 chỗ", en: "Almost full · 2 seats" }, level: "almost" },
     { course: { vi: "MLOps & Deployment", en: "MLOps & Deployment" }, start: "19/08/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T7 — 09:00", en: "Sat — 9:00 AM" }, seats: { vi: "Còn chỗ", en: "Seats available" }, level: "open" },
-    { course: { vi: "Deep Learning với PyTorch", en: "Deep Learning with PyTorch" }, start: "02/09/2026", mode: { vi: "Offline (Hà Nội)", en: "On-site (Hanoi)" }, time: { vi: "T4 · T6 — 19:00", en: "Wed · Fri — 7:00 PM" }, seats: { vi: "Mở đăng ký", en: "Now open" }, level: "open" }
+    { course: { vi: "Deep Learning với PyTorch", en: "Deep Learning with PyTorch" }, start: "02/09/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T4 · T6 — 19:00", en: "Wed · Fri — 7:00 PM" }, seats: { vi: "Mở đăng ký", en: "Now open" }, level: "open" }
   ],
 
   posts: [
@@ -1391,7 +1391,7 @@ function renderDynamic() {
         url: SITE_URL + "course.html?id=" + c.id,
         provider: { "@type": "EducationalOrganization", name: "TalentNode", sameAs: SITE_URL },
         offers: { "@type": "Offer", price: (c.price || "").replace(/[^\d]/g, ""), priceCurrency: "VND", category: "Paid" },
-        hasCourseInstance: { "@type": "CourseInstance", courseMode: ["online", "onsite"], courseWorkload: `P${c.weeks}W` }
+        hasCourseInstance: { "@type": "CourseInstance", courseMode: ["online"], courseWorkload: `P${c.weeks}W` }
       });
       const L = {
         crumb: IS_VI() ? "Khóa học" : "Courses",
