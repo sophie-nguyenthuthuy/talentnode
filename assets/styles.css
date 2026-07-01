@@ -324,7 +324,12 @@ section { padding: 84px 0; }
 .article { padding: 50px 0 20px; }
 .article h1 { font-size: clamp(1.8rem, 4vw, 2.7rem); margin: 10px 0 12px; font-weight: 800; }
 .article .tag { display: inline-block; }
-.article-thumb { height: 300px; border-radius: 20px; margin: 30px auto; width: min(900px, 92%); }
+.article-thumb { height: 300px; border-radius: 20px; margin: 30px auto; width: min(900px, 92%); position: relative; overflow: hidden; }
+.article-thumb svg.hero-svg, .post-thumb svg.hero-svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.article-fig { margin: 26px 0 30px; padding: 22px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; }
+.article-fig svg { display: block; width: 100%; height: auto; }
+.article-fig figcaption { margin-top: 12px; text-align: center; color: var(--muted); font-size: .88rem; }
+.article-ref { font-size: .9rem; color: var(--muted); border-left: 3px solid var(--brand-2); padding: 6px 0 6px 14px; margin: 26px 0 0; }
 .article-lead { font-size: 1.2rem; color: var(--text); font-weight: 500; margin-bottom: 26px; }
 .article-body h2 { font-size: 1.4rem; margin: 34px 0 12px; }
 .article-body p { color: var(--muted); font-size: 1.05rem; line-height: 1.8; margin: 0 0 18px; }
@@ -401,7 +406,7 @@ section { padding: 84px 0; }
 .posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .post { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; transition: .2s; }
 .post:hover { transform: translateY(-6px); border-color: var(--ring); box-shadow: var(--shadow); }
-.post-thumb { height: 150px; display: flex; align-items: flex-end; padding: 16px; }
+.post-thumb { height: 150px; display: flex; align-items: flex-end; padding: 16px; position: relative; overflow: hidden; }
 .post-thumb span { background: rgba(0,0,0,.35); color: white; font-weight: 700; font-size: .78rem; padding: 5px 12px; border-radius: 999px; backdrop-filter: blur(4px); }
 .post-body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
 .post-meta { color: var(--muted); font-size: .82rem; margin-bottom: 10px; }

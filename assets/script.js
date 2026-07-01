@@ -899,63 +899,1083 @@ const DATA = {
 
   posts: [
     {
-      slug: "lo-trinh-data-engineer-6-thang", tag: "Data Engineering", grad: "linear-gradient(120deg,#22d3ee,#7c5cff)", date: "28/06/2026", read: 8,
-      title: { vi: "Lộ trình tự học Data Engineer trong 6 tháng", en: "A 6-month self-study roadmap to Data Engineer" },
-      excerpt: { vi: "Kế hoạch từng tuần: SQL, Python, Spark, Kafka, dbt và dự án nào nên làm trước.", en: "A week-by-week plan: SQL, Python, Spark, Kafka, dbt and which projects to build first." },
-      body: [
-        { h: { vi: "Tháng 1–2: Nền tảng", en: "Months 1–2: Foundations" }, p: { vi: "Bắt đầu với Linux, Git, Python và SQL. Đây là bộ kỹ năng bạn dùng mỗi ngày, nên hãy luyện thật chắc trước khi chạm tới công cụ big data.", en: "Start with Linux, Git, Python and SQL. These are the skills you use every day, so nail them before touching big-data tools." } },
-        { h: { vi: "Tháng 3–4: Xử lý dữ liệu lớn", en: "Months 3–4: Big data" }, p: { vi: "Học Spark cho batch và Kafka cho streaming. Song song, làm quen mô hình hóa dữ liệu và dbt để biến dữ liệu thô thành bảng sạch.", en: "Learn Spark for batch and Kafka for streaming. In parallel, get comfortable with data modeling and dbt to turn raw data into clean tables." } },
-        { h: { vi: "Tháng 5–6: Dự án & cloud", en: "Months 5–6: Projects & cloud" }, p: { vi: "Ghép mọi thứ thành một pipeline end-to-end trên cloud, thêm Airflow để orchestrate và CI/CD. Đây chính là dự án bạn khoe khi phỏng vấn.", en: "Wire everything into an end-to-end pipeline on the cloud, add Airflow for orchestration and CI/CD. This is the project you show in interviews." } }
+      "slug": "danh-gia-he-thong-rag",
+      "tag": "AI / LLM",
+      "grad": "linear-gradient(120deg,#7c5cff,#22d3ee)",
+      "date": "01/07/2026",
+      "read": 9,
+      "title": {
+        "vi": "Đánh giá hệ thống RAG: đo cái gì và đo thế nào",
+        "en": "Evaluating RAG systems: what to measure and how"
+      },
+      "excerpt": {
+        "vi": "Tách bạch chất lượng truy hồi và chất lượng sinh, kèm các chỉ số như faithfulness và context precision.",
+        "en": "Separate retrieval quality from generation quality, with metrics like faithfulness and context precision."
+      },
+      "hero": "<svg class=\"hero-svg\" viewBox=\"0 0 400 200\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"rgba(255,255,255,.16)\" stroke-width=\"1.4\"><circle cx=\"330\" cy=\"42\" r=\"66\"/><circle cx=\"362\" cy=\"158\" r=\"42\"/><path d=\"M0 150H400M0 112H400\"/></g><circle cx=\"72\" cy=\"100\" r=\"48\" fill=\"rgba(255,255,255,.15)\"/><text x=\"72\" y=\"118\" font-size=\"46\" text-anchor=\"middle\">🧪</text></svg>",
+      "fig": "<svg viewBox=\"0 0 720 104\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"inherit\"><rect x=\"0\" y=\"20\" rx=\"10\" width=\"120\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"60\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Câu hỏi</text><path d=\"M122 52 H148\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"150\" y=\"20\" rx=\"10\" width=\"120\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"210\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Truy hồi</text><path d=\"M272 52 H298\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"300\" y=\"20\" rx=\"10\" width=\"120\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"360\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Ngữ cảnh</text><path d=\"M422 52 H448\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"450\" y=\"20\" rx=\"10\" width=\"120\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"510\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Sinh</text><path d=\"M572 52 H598\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"600\" y=\"20\" rx=\"10\" width=\"120\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"660\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Đánh giá</text><defs><marker id=\"ar\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M0 0L6 3L0 6z\" fill=\"var(--brand-2)\"/></marker></defs></svg>",
+      "figCaption": {
+        "vi": "Vòng đánh giá RAG end-to-end",
+        "en": "The end-to-end RAG evaluation loop"
+      },
+      "ref": "RAGAS: Automated Evaluation of Retrieval Augmented Generation (Es et al., 2023)",
+      "body": [
+        {
+          "h": {
+            "vi": "Hai lớp cần đo riêng",
+            "en": "Two layers to measure separately"
+          },
+          "p": {
+            "vi": "Đo truy hồi (có lấy đúng đoạn không) tách khỏi sinh (câu trả lời có bám ngữ cảnh không). Gộp chung sẽ che giấu lỗi thật sự nằm ở đâu.",
+            "en": "Measure retrieval (did we fetch the right passages?) separately from generation (is the answer grounded?). Bundling them hides where the real error is."
+          }
+        },
+        {
+          "h": {
+            "vi": "Chỉ số hữu ích",
+            "en": "Metrics that matter"
+          },
+          "p": {
+            "vi": "Truy hồi: context precision/recall. Sinh: faithfulness (không bịa) và answer relevancy. Bộ eval nhỏ có nhãn giúp so sánh thay đổi một cách khách quan.",
+            "en": "Retrieval: context precision/recall. Generation: faithfulness (no hallucination) and answer relevancy. A small labeled eval set lets you compare changes objectively."
+          }
+        },
+        {
+          "h": {
+            "vi": "Tự động hóa đánh giá",
+            "en": "Automate the loop"
+          },
+          "p": {
+            "vi": "Dùng LLM-as-judge cùng bộ câu hỏi vàng, chạy lại mỗi khi đổi chunking, embedding hay prompt. Theo dõi điểm số theo thời gian như một test hồi quy.",
+            "en": "Use LLM-as-judge with a golden question set and re-run it whenever you change chunking, embeddings or prompts. Track scores over time like a regression test."
+          }
+        }
       ]
     },
     {
-      slug: "rag-la-gi-chatbot-llm-oss", tag: "AI / LLM", grad: "linear-gradient(120deg,#7c5cff,#ff5ca8)", date: "20/06/2026", read: 10,
-      title: { vi: "RAG là gì? Xây chatbot doanh nghiệp với LLM mã nguồn mở", en: "What is RAG? Build an enterprise chatbot with open-source LLMs" },
-      excerpt: { vi: "Kiến trúc RAG, chọn embedding, vector DB và cách đánh giá chất lượng trả lời.", en: "RAG architecture, choosing embeddings, vector DBs and how to evaluate answer quality." },
-      body: [
-        { h: { vi: "RAG giải quyết vấn đề gì?", en: "What problem does RAG solve?" }, p: { vi: "LLM không biết dữ liệu nội bộ của bạn và có thể 'chém'. RAG nạp ngữ cảnh liên quan từ kho tài liệu vào prompt, giúp câu trả lời bám sát nguồn thật.", en: "An LLM doesn't know your internal data and may hallucinate. RAG injects relevant context from your documents into the prompt so answers stay grounded in real sources." } },
-        { h: { vi: "Các mảnh ghép", en: "The building blocks" }, p: { vi: "Chunk tài liệu → tạo embedding → lưu vào vector DB → truy hồi đoạn liên quan → đưa vào LLM. Với hàng mã nguồn mở, bạn có thể tự host toàn bộ.", en: "Chunk documents → create embeddings → store in a vector DB → retrieve relevant passages → feed the LLM. With open-source components you can self-host the whole thing." } },
-        { h: { vi: "Đừng quên đánh giá", en: "Don't skip evaluation" }, p: { vi: "Đo độ chính xác truy hồi và chất lượng câu trả lời (có trích dẫn, không bịa). Một bộ eval nhỏ giúp bạn biết thay đổi nào thực sự cải thiện hệ thống.", en: "Measure retrieval accuracy and answer quality (cited, not made up). A small eval set tells you which changes actually improve the system." } }
+      "slug": "vector-db-hnsw-vs-ivf",
+      "tag": "AI / LLM",
+      "grad": "linear-gradient(120deg,#ff5ca8,#ff9d5c)",
+      "date": "26/06/2026",
+      "read": 8,
+      "title": {
+        "vi": "Chỉ mục vector: HNSW hay IVF?",
+        "en": "Vector DB indexes: HNSW vs IVF"
+      },
+      "excerpt": {
+        "vi": "So sánh hai họ chỉ mục ANN phổ biến và khi nào nên chọn cái nào cho ứng dụng thật.",
+        "en": "Comparing the two popular ANN index families and when to pick each for real workloads."
+      },
+      "hero": "<svg class=\"hero-svg\" viewBox=\"0 0 400 200\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"rgba(255,255,255,.16)\" stroke-width=\"1.4\"><circle cx=\"330\" cy=\"42\" r=\"66\"/><circle cx=\"362\" cy=\"158\" r=\"42\"/><path d=\"M0 150H400M0 112H400\"/></g><circle cx=\"72\" cy=\"100\" r=\"48\" fill=\"rgba(255,255,255,.15)\"/><text x=\"72\" y=\"118\" font-size=\"46\" text-anchor=\"middle\">🧭</text></svg>",
+      "fig": "<svg viewBox=\"0 0 720 210\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"inherit\"><rect x=\"0\" y=\"0\" rx=\"12\" width=\"351\" height=\"210\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><rect x=\"0\" y=\"0\" rx=\"12\" width=\"351\" height=\"40\" fill=\"var(--brand-2)\" opacity=\"0.14\"/><text x=\"175.5\" y=\"26\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"800\" fill=\"var(--text)\">HNSW</text><text x=\"16\" y=\"66\" font-size=\"12.5\" fill=\"var(--muted)\">• Đồ thị / graph</text><text x=\"16\" y=\"96\" font-size=\"12.5\" fill=\"var(--muted)\">• Truy vấn nhanh, recall cao</text><text x=\"16\" y=\"126\" font-size=\"12.5\" fill=\"var(--muted)\">• Tốn RAM</text><text x=\"16\" y=\"156\" font-size=\"12.5\" fill=\"var(--muted)\">• Chỉnh: M, efSearch</text><rect x=\"369\" y=\"0\" rx=\"12\" width=\"351\" height=\"210\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><rect x=\"369\" y=\"0\" rx=\"12\" width=\"351\" height=\"40\" fill=\"var(--brand-2)\" opacity=\"0.14\"/><text x=\"544.5\" y=\"26\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"800\" fill=\"var(--text)\">IVF / IVF-PQ</text><text x=\"385\" y=\"66\" font-size=\"12.5\" fill=\"var(--muted)\">• Phân cụm / clustering</text><text x=\"385\" y=\"96\" font-size=\"12.5\" fill=\"var(--muted)\">• Nén tốt, tiết kiệm bộ nhớ</text><text x=\"385\" y=\"126\" font-size=\"12.5\" fill=\"var(--muted)\">• Quy mô rất lớn</text><text x=\"385\" y=\"156\" font-size=\"12.5\" fill=\"var(--muted)\">• Chỉnh: nlist, nprobe</text></svg>",
+      "figCaption": {
+        "vi": "HNSW vs IVF: đánh đổi tốc độ, bộ nhớ, độ chính xác",
+        "en": "HNSW vs IVF: trading speed, memory and accuracy"
+      },
+      "ref": "Malkov & Yashunin, Efficient and robust ANN using Hierarchical Navigable Small World graphs (2018); Faiss docs",
+      "body": [
+        {
+          "h": {
+            "vi": "Vì sao cần chỉ mục xấp xỉ",
+            "en": "Why approximate indexes"
+          },
+          "p": {
+            "vi": "Tìm hàng xóm gần nhất tuyệt đối trên hàng triệu vector là quá chậm. ANN đánh đổi một chút độ chính xác (recall) để lấy tốc độ truy vấn nhanh gấp nhiều lần.",
+            "en": "Exact nearest-neighbor over millions of vectors is too slow. ANN trades a little accuracy (recall) for query speed that is orders of magnitude faster."
+          }
+        },
+        {
+          "h": {
+            "vi": "HNSW",
+            "en": "HNSW"
+          },
+          "p": {
+            "vi": "Đồ thị nhiều tầng, truy vấn rất nhanh với recall cao, phù hợp low-latency. Đổi lại tốn RAM và chèn/xóa phức tạp hơn.",
+            "en": "A multi-layer graph with very fast, high-recall queries — great for low latency. The trade-off is higher memory use and trickier inserts/deletes."
+          }
+        },
+        {
+          "h": {
+            "vi": "IVF (và IVF-PQ)",
+            "en": "IVF (and IVF-PQ)"
+          },
+          "p": {
+            "vi": "Chia không gian thành cụm rồi chỉ tìm trong vài cụm gần nhất; kết hợp PQ để nén giúp tiết kiệm bộ nhớ ở quy mô rất lớn, đổi lại phải chỉnh nprobe.",
+            "en": "Partitions the space into clusters and searches only the nearest few; pairing it with PQ compression saves memory at huge scale, at the cost of tuning nprobe."
+          }
+        }
       ]
     },
     {
-      slug: "5-du-an-data-analyst-portfolio", tag: "Data Analyst", grad: "linear-gradient(120deg,#34d399,#22d3ee)", date: "12/06/2026", read: 6,
-      title: { vi: "5 dự án Data Analyst nên có trong portfolio", en: "5 Data Analyst projects your portfolio needs" },
-      excerpt: { vi: "Từ phân tích doanh thu đến dashboard cohort — kèm bộ dữ liệu để bắt tay làm ngay.", en: "From revenue analysis to cohort dashboards — with datasets to start right away." },
-      body: [
-        { h: { vi: "Vì sao portfolio quan trọng hơn bằng cấp", en: "Why a portfolio beats a certificate" }, p: { vi: "Nhà tuyển dụng muốn thấy bạn xử lý dữ liệu thật và kể được câu chuyện từ con số, chứ không phải danh sách khóa học đã hoàn thành.", en: "Recruiters want to see you handle real data and tell a story from numbers — not a list of completed courses." } },
-        { h: { vi: "5 dự án gợi ý", en: "5 suggested projects" }, p: { vi: "Phân tích doanh thu, dashboard cohort giữ chân người dùng, phân tích A/B test, phân khúc khách hàng (RFM) và một báo cáo insight end-to-end.", en: "Revenue analysis, a retention cohort dashboard, an A/B test analysis, customer segmentation (RFM) and one end-to-end insight report." } },
-        { h: { vi: "Trình bày thế nào", en: "How to present it" }, p: { vi: "Mỗi dự án nên có: câu hỏi kinh doanh, cách bạn xử lý, biểu đồ rõ ràng và 2–3 insight hành động được. Đưa lên GitHub kèm README.", en: "Each project should have: the business question, your approach, clear charts and 2–3 actionable insights. Put it on GitHub with a README." } }
+      "slug": "chien-luoc-chunking-rag",
+      "tag": "AI / LLM",
+      "grad": "linear-gradient(120deg,#34d399,#22d3ee)",
+      "date": "21/06/2026",
+      "read": 7,
+      "title": {
+        "vi": "Chiến lược chunking cho RAG",
+        "en": "Chunking strategies for RAG"
+      },
+      "excerpt": {
+        "vi": "Cách cắt tài liệu ảnh hưởng trực tiếp tới chất lượng truy hồi — fixed-size, theo ngữ nghĩa hay theo cấu trúc.",
+        "en": "How you split documents directly drives retrieval quality — fixed-size, semantic or structure-aware."
+      },
+      "hero": "<svg class=\"hero-svg\" viewBox=\"0 0 400 200\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"rgba(255,255,255,.16)\" stroke-width=\"1.4\"><circle cx=\"330\" cy=\"42\" r=\"66\"/><circle cx=\"362\" cy=\"158\" r=\"42\"/><path d=\"M0 150H400M0 112H400\"/></g><circle cx=\"72\" cy=\"100\" r=\"48\" fill=\"rgba(255,255,255,.15)\"/><text x=\"72\" y=\"118\" font-size=\"46\" text-anchor=\"middle\">✂️</text></svg>",
+      "fig": "<svg viewBox=\"0 0 720 210\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"inherit\"><rect x=\"0\" y=\"0\" rx=\"12\" width=\"351\" height=\"210\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><rect x=\"0\" y=\"0\" rx=\"12\" width=\"351\" height=\"40\" fill=\"var(--brand-2)\" opacity=\"0.14\"/><text x=\"175.5\" y=\"26\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"800\" fill=\"var(--text)\">Fixed-size</text><text x=\"16\" y=\"66\" font-size=\"12.5\" fill=\"var(--muted)\">• Cắt theo số token</text><text x=\"16\" y=\"96\" font-size=\"12.5\" fill=\"var(--muted)\">• Đơn giản, nhanh</text><text x=\"16\" y=\"126\" font-size=\"12.5\" fill=\"var(--muted)\">• Dễ đứt ý giữa chừng</text><text x=\"16\" y=\"156\" font-size=\"12.5\" fill=\"var(--muted)\">• Có overlap để bù</text><rect x=\"369\" y=\"0\" rx=\"12\" width=\"351\" height=\"210\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><rect x=\"369\" y=\"0\" rx=\"12\" width=\"351\" height=\"40\" fill=\"var(--brand-2)\" opacity=\"0.14\"/><text x=\"544.5\" y=\"26\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"800\" fill=\"var(--text)\">Semantic</text><text x=\"385\" y=\"66\" font-size=\"12.5\" fill=\"var(--muted)\">• Cắt theo câu/tiêu đề</text><text x=\"385\" y=\"96\" font-size=\"12.5\" fill=\"var(--muted)\">• Giữ mạch ngữ nghĩa</text><text x=\"385\" y=\"126\" font-size=\"12.5\" fill=\"var(--muted)\">• Truy hồi chính xác hơn</text><text x=\"385\" y=\"156\" font-size=\"12.5\" fill=\"var(--muted)\">• Tốn xử lý hơn</text></svg>",
+      "figCaption": {
+        "vi": "Hai cách cắt tài liệu phổ biến",
+        "en": "Two common ways to split documents"
+      },
+      "ref": "LlamaIndex & LangChain documentation on text splitting / node parsing",
+      "body": [
+        {
+          "h": {
+            "vi": "Chunk quyết định recall",
+            "en": "Chunks decide recall"
+          },
+          "p": {
+            "vi": "Đoạn quá lớn làm loãng tín hiệu; quá nhỏ thì mất ngữ cảnh. Kích thước và độ chồng lấn (overlap) là hai núm chỉnh đầu tiên bạn nên thử.",
+            "en": "Chunks that are too large dilute the signal; too small and you lose context. Chunk size and overlap are the first two knobs to tune."
+          }
+        },
+        {
+          "h": {
+            "vi": "Fixed-size vs ngữ nghĩa",
+            "en": "Fixed-size vs semantic"
+          },
+          "p": {
+            "vi": "Fixed-size dễ làm và nhanh. Cắt theo ngữ nghĩa (theo câu/đoạn/tiêu đề) giữ mạch ý tốt hơn, thường cải thiện chất lượng trả lời cho tài liệu dài.",
+            "en": "Fixed-size is simple and fast. Semantic splitting (by sentence/paragraph/heading) preserves meaning and usually improves answers on long documents."
+          }
+        },
+        {
+          "h": {
+            "vi": "Giữ metadata",
+            "en": "Keep metadata"
+          },
+          "p": {
+            "vi": "Đính kèm tiêu đề, nguồn, số trang vào mỗi chunk để lọc và trích dẫn. Metadata tốt giúp truy hồi chính xác và câu trả lời có nguồn rõ ràng.",
+            "en": "Attach titles, source and page to each chunk for filtering and citations. Good metadata makes retrieval precise and answers traceable."
+          }
+        }
       ]
     },
     {
-      slug: "zero-den-ml-engineer-hoc-gi-truoc", tag: "Machine Learning", grad: "linear-gradient(120deg,#ff9d5c,#ff5ca8)", date: "05/06/2026", read: 7,
-      title: { vi: "Từ zero đến Machine Learning Engineer: học gì trước?", en: "From zero to ML Engineer: what to learn first" },
-      excerpt: { vi: "Toán cần bao nhiêu là đủ, thư viện nào ưu tiên và cách tránh 'tutorial hell'.", en: "How much math is enough, which libraries to prioritize and how to avoid tutorial hell." },
-      body: [
-        { h: { vi: "Cần bao nhiêu toán?", en: "How much math?" }, p: { vi: "Đủ để hiểu mô hình đang làm gì: đại số tuyến tính cơ bản, đạo hàm và xác suất. Bạn không cần chứng minh định lý — cần trực giác.", en: "Enough to understand what a model does: basic linear algebra, derivatives and probability. You don't need to prove theorems — you need intuition." } },
-        { h: { vi: "Ưu tiên thực hành", en: "Prioritize practice" }, p: { vi: "Học Python, pandas và scikit-learn qua các bài toán thật. Làm trọn một dự án nhỏ còn giá trị hơn xem mười tutorial.", en: "Learn Python, pandas and scikit-learn through real problems. Finishing one small project beats watching ten tutorials." } },
-        { h: { vi: "Thoát 'tutorial hell'", en: "Escape tutorial hell" }, p: { vi: "Chọn một bộ dữ liệu bạn quan tâm, đặt câu hỏi, và tự xây từ đầu đến cuối. Vướng ở đâu học ở đó — đó là cách nhớ lâu nhất.", en: "Pick a dataset you care about, ask a question, and build end-to-end yourself. Learn what you get stuck on — that's what sticks." } }
+      "slug": "llm-agent-react-function-calling",
+      "tag": "AI / LLM",
+      "grad": "linear-gradient(120deg,#7c5cff,#ff5ca8)",
+      "date": "16/06/2026",
+      "read": 9,
+      "title": {
+        "vi": "LLM agent: ReAct và function calling",
+        "en": "LLM agents: ReAct and function calling"
+      },
+      "excerpt": {
+        "vi": "Cách một agent suy nghĩ, gọi công cụ và quan sát kết quả để hoàn thành tác vụ nhiều bước.",
+        "en": "How an agent reasons, calls tools and observes results to finish multi-step tasks."
+      },
+      "hero": "<svg class=\"hero-svg\" viewBox=\"0 0 400 200\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"rgba(255,255,255,.16)\" stroke-width=\"1.4\"><circle cx=\"330\" cy=\"42\" r=\"66\"/><circle cx=\"362\" cy=\"158\" r=\"42\"/><path d=\"M0 150H400M0 112H400\"/></g><circle cx=\"72\" cy=\"100\" r=\"48\" fill=\"rgba(255,255,255,.15)\"/><text x=\"72\" y=\"118\" font-size=\"46\" text-anchor=\"middle\">🤖</text></svg>",
+      "fig": "<svg viewBox=\"0 0 720 230\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"inherit\"><circle cx=\"360\" cy=\"115\" r=\"78\" fill=\"none\" stroke=\"var(--brand-2)\" stroke-width=\"2\" stroke-dasharray=\"6 8\"/><rect x=\"290\" y=\"17\" rx=\"9\" width=\"140\" height=\"40\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"360\" y=\"42\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">Thought</text><rect x=\"357.5499814951862\" y=\"134\" rx=\"9\" width=\"140\" height=\"40\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"427.5499814951862\" y=\"159\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">Action (tool)</text><rect x=\"222.45001850481378\" y=\"134.00000000000003\" rx=\"9\" width=\"140\" height=\"40\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"292.4500185048138\" y=\"159.00000000000003\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">Observation</text></svg>",
+      "figCaption": {
+        "vi": "Vòng lặp suy luận–hành động của agent",
+        "en": "The agent reason–act loop"
+      },
+      "ref": "Yao et al., ReAct: Synergizing Reasoning and Acting in Language Models (2022)",
+      "body": [
+        {
+          "h": {
+            "vi": "Vòng lặp Thought–Action–Observation",
+            "en": "The Thought–Action–Observation loop"
+          },
+          "p": {
+            "vi": "ReAct đan xen suy luận và hành động: model nghĩ, chọn một công cụ, đọc kết quả rồi lặp lại cho đến khi đủ thông tin để trả lời.",
+            "en": "ReAct interleaves reasoning and acting: the model thinks, picks a tool, reads the result, then repeats until it has enough to answer."
+          }
+        },
+        {
+          "h": {
+            "vi": "Function calling",
+            "en": "Function calling"
+          },
+          "p": {
+            "vi": "Thay vì parse văn bản, model trả về lời gọi hàm có cấu trúc (tên + tham số JSON). Điều này giúp tích hợp API đáng tin cậy hơn nhiều.",
+            "en": "Instead of parsing free text, the model returns a structured function call (name + JSON args). This makes API integration far more reliable."
+          }
+        },
+        {
+          "h": {
+            "vi": "Kiểm soát & an toàn",
+            "en": "Guardrails"
+          },
+          "p": {
+            "vi": "Giới hạn số bước, xác thực tham số, và cho phép người duyệt hành động có tác dụng phụ. Agent mạnh cần ranh giới rõ ràng.",
+            "en": "Cap the number of steps, validate arguments, and require human approval for side-effectful actions. Powerful agents need clear boundaries."
+          }
+        }
       ]
     },
     {
-      slug: "mlops-cho-nguoi-moi-cicd-ml", tag: "MLOps", grad: "linear-gradient(120deg,#7c5cff,#22d3ee)", date: "28/05/2026", read: 9,
-      title: { vi: "MLOps cho người mới: CI/CD cho mô hình ML", en: "MLOps for beginners: CI/CD for ML models" },
-      excerpt: { vi: "Đóng gói model, versioning, giám sát drift và tự động triển khai lên cloud.", en: "Packaging models, versioning, drift monitoring and automated cloud deployment." },
-      body: [
-        { h: { vi: "Vì sao model 'chết' sau khi deploy", en: "Why models 'die' after deploy" }, p: { vi: "Dữ liệu thực thay đổi theo thời gian (drift), khiến mô hình từng chính xác dần kém đi. MLOps là bộ thực hành giữ cho model luôn khỏe.", en: "Real data shifts over time (drift), so a once-accurate model degrades. MLOps is the set of practices that keeps models healthy." } },
-        { h: { vi: "CI/CD cho ML khác gì?", en: "How is CI/CD for ML different?" }, p: { vi: "Ngoài code, bạn còn version dữ liệu và model. Pipeline nên tự động test, huấn luyện lại và triển khai khi có thay đổi.", en: "Beyond code, you version data and models too. The pipeline should automatically test, retrain and deploy when things change." } },
-        { h: { vi: "Bắt đầu nhỏ", en: "Start small" }, p: { vi: "Dùng MLflow để tracking, Docker để đóng gói và GitHub Actions để tự động hóa. Thêm giám sát drift ngay khi có người dùng thật.", en: "Use MLflow for tracking, Docker for packaging and GitHub Actions for automation. Add drift monitoring as soon as you have real users." } }
+      "slug": "fine-tuning-vs-rag-vs-prompt",
+      "tag": "AI / LLM",
+      "grad": "linear-gradient(120deg,#22d3ee,#7c5cff)",
+      "date": "11/06/2026",
+      "read": 8,
+      "title": {
+        "vi": "Fine-tuning, RAG hay prompt engineering?",
+        "en": "Fine-tuning vs RAG vs prompt engineering"
+      },
+      "excerpt": {
+        "vi": "Ba cách tùy biến LLM cho bài toán của bạn — và tiêu chí chọn cái phù hợp.",
+        "en": "Three ways to adapt an LLM to your problem — and how to choose."
+      },
+      "hero": "<svg class=\"hero-svg\" viewBox=\"0 0 400 200\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"rgba(255,255,255,.16)\" stroke-width=\"1.4\"><circle cx=\"330\" cy=\"42\" r=\"66\"/><circle cx=\"362\" cy=\"158\" r=\"42\"/><path d=\"M0 150H400M0 112H400\"/></g><circle cx=\"72\" cy=\"100\" r=\"48\" fill=\"rgba(255,255,255,.15)\"/><text x=\"72\" y=\"118\" font-size=\"46\" text-anchor=\"middle\">🎛️</text></svg>",
+      "fig": "<svg viewBox=\"0 0 720 210\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"inherit\"><line x1=\"20\" y1=\"170\" x2=\"700\" y2=\"170\" stroke=\"var(--border-strong)\"/><rect x=\"127.5\" y=\"144\" width=\"70\" height=\"26\" rx=\"6\" fill=\"var(--brand-2)\" opacity=\"0.8\"/><text x=\"162.5\" y=\"136\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"700\" fill=\"var(--text)\">20</text><text x=\"162.5\" y=\"188\" text-anchor=\"middle\" font-size=\"11.5\" fill=\"var(--muted)\">Prompt</text><rect x=\"325\" y=\"98.5\" width=\"70\" height=\"71.5\" rx=\"6\" fill=\"var(--brand-2)\" opacity=\"0.8\"/><text x=\"360\" y=\"90.5\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"700\" fill=\"var(--text)\">55</text><text x=\"360\" y=\"188\" text-anchor=\"middle\" font-size=\"11.5\" fill=\"var(--muted)\">RAG</text><rect x=\"522.5\" y=\"53\" width=\"70\" height=\"117\" rx=\"6\" fill=\"var(--brand-2)\" opacity=\"0.8\"/><text x=\"557.5\" y=\"45\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"700\" fill=\"var(--text)\">90</text><text x=\"557.5\" y=\"188\" text-anchor=\"middle\" font-size=\"11.5\" fill=\"var(--muted)\">Fine-tune</text></svg>",
+      "figCaption": {
+        "vi": "Chi phí/độ phức tạp tăng dần theo kỹ thuật",
+        "en": "Cost/complexity rises across the three techniques"
+      },
+      "ref": "Lewis et al., Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (2020)",
+      "body": [
+        {
+          "h": {
+            "vi": "Bắt đầu từ prompt",
+            "en": "Start with prompting"
+          },
+          "p": {
+            "vi": "Rẻ và nhanh nhất. Prompt tốt cùng vài ví dụ (few-shot) giải quyết được nhiều việc trước khi cần đến kỹ thuật nặng hơn.",
+            "en": "Cheapest and fastest. A good prompt with a few examples solves a lot before you reach for heavier techniques."
+          }
+        },
+        {
+          "h": {
+            "vi": "RAG khi cần kiến thức",
+            "en": "RAG for knowledge"
+          },
+          "p": {
+            "vi": "Khi câu trả lời cần dữ liệu riêng hoặc cập nhật, RAG nạp ngữ cảnh vào lúc chạy — không phải huấn luyện lại, và dễ trích dẫn nguồn.",
+            "en": "When answers need private or fresh data, RAG injects context at run time — no retraining, and easy to cite sources."
+          }
+        },
+        {
+          "h": {
+            "vi": "Fine-tune khi cần hành vi",
+            "en": "Fine-tune for behavior"
+          },
+          "p": {
+            "vi": "Fine-tuning phù hợp khi cần định dạng, phong cách hay kỹ năng ổn định, chấp nhận chi phí chuẩn bị dữ liệu và huấn luyện.",
+            "en": "Fine-tuning fits when you need consistent format, style or a specialized skill, accepting the cost of data prep and training."
+          }
+        }
       ]
     },
     {
-      slug: "sql-phong-van-20-cau-hoi", tag: "SQL", grad: "linear-gradient(120deg,#22d3ee,#34d399)", date: "20/05/2026", read: 5,
-      title: { vi: "SQL phỏng vấn: 20 câu hỏi thường gặp", en: "SQL interviews: 20 common questions" },
-      excerpt: { vi: "Window functions, join nâng cao và mẹo tối ưu truy vấn nhà tuyển dụng hay hỏi.", en: "Window functions, advanced joins and query-tuning tips recruiters love to ask." },
-      body: [
-        { h: { vi: "Nhóm câu hỏi cơ bản", en: "The basics they always ask" }, p: { vi: "JOIN các loại, GROUP BY với HAVING, và khác biệt giữa WHERE và HAVING. Nắm chắc nhóm này là qua vòng sàng lọc đầu tiên.", en: "The JOIN types, GROUP BY with HAVING, and the difference between WHERE and HAVING. Master these to clear the first screen." } },
-        { h: { vi: "Window functions", en: "Window functions" }, p: { vi: "ROW_NUMBER, RANK, LAG/LEAD và running total là 'đặc sản' phỏng vấn phân tích. Hãy luyện bài toán top-N theo nhóm.", en: "ROW_NUMBER, RANK, LAG/LEAD and running totals are analytics-interview staples. Practice top-N-per-group problems." } },
-        { h: { vi: "Tối ưu truy vấn", en: "Query optimization" }, p: { vi: "Biết đọc EXPLAIN, dùng index đúng chỗ và tránh subquery lồng không cần thiết. Ứng viên giải thích được 'vì sao chậm' luôn ghi điểm.", en: "Read EXPLAIN, index the right columns and avoid needless nested subqueries. Candidates who can explain 'why it's slow' always score." } }
+      "slug": "self-attention-transformer",
+      "tag": "Deep Learning",
+      "grad": "linear-gradient(120deg,#ff9d5c,#ff5ca8)",
+      "date": "06/06/2026",
+      "read": 9,
+      "title": {
+        "vi": "Self-attention trong Transformer, giải thích trực quan",
+        "en": "Transformer self-attention, explained"
+      },
+      "excerpt": {
+        "vi": "Query, Key, Value và vì sao attention để mô hình 'nhìn' toàn bộ chuỗi cùng lúc.",
+        "en": "Query, Key, Value and why attention lets a model 'look' at the whole sequence at once."
+      },
+      "hero": "<svg class=\"hero-svg\" viewBox=\"0 0 400 200\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"rgba(255,255,255,.16)\" stroke-width=\"1.4\"><circle cx=\"330\" cy=\"42\" r=\"66\"/><circle cx=\"362\" cy=\"158\" r=\"42\"/><path d=\"M0 150H400M0 112H400\"/></g><circle cx=\"72\" cy=\"100\" r=\"48\" fill=\"rgba(255,255,255,.15)\"/><text x=\"72\" y=\"118\" font-size=\"46\" text-anchor=\"middle\">🔎</text></svg>",
+      "fig": "<svg viewBox=\"0 0 720 104\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"inherit\"><rect x=\"0\" y=\"20\" rx=\"10\" width=\"120\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"60\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Q · K</text><path d=\"M122 52 H148\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"150\" y=\"20\" rx=\"10\" width=\"120\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"210\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Scores</text><path d=\"M272 52 H298\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"300\" y=\"20\" rx=\"10\" width=\"120\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"360\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Softmax</text><path d=\"M422 52 H448\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"450\" y=\"20\" rx=\"10\" width=\"120\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"510\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">× Value</text><path d=\"M572 52 H598\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"600\" y=\"20\" rx=\"10\" width=\"120\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"660\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Output</text><defs><marker id=\"ar\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M0 0L6 3L0 6z\" fill=\"var(--brand-2)\"/></marker></defs></svg>",
+      "figCaption": {
+        "vi": "Cơ chế tính một lớp self-attention",
+        "en": "How one self-attention layer is computed"
+      },
+      "ref": "Vaswani et al., Attention Is All You Need (2017)",
+      "body": [
+        {
+          "h": {
+            "vi": "Q, K, V là gì",
+            "en": "What Q, K, V are"
+          },
+          "p": {
+            "vi": "Mỗi token được chiếu thành ba vector: Query hỏi, Key trả lời, Value mang nội dung. Điểm tương đồng giữa Q và K quyết định trọng số chú ý.",
+            "en": "Each token is projected into three vectors: a Query asks, a Key answers, a Value carries content. The Q·K similarity sets the attention weights."
+          }
+        },
+        {
+          "h": {
+            "vi": "Softmax và tổng có trọng số",
+            "en": "Softmax and weighted sum"
+          },
+          "p": {
+            "vi": "Điểm số được chuẩn hóa bằng softmax rồi dùng để lấy trung bình có trọng số các Value — token gom thông tin từ những token liên quan nhất.",
+            "en": "Scores are normalized with softmax and used to weight-average the Values — each token gathers information from the tokens most relevant to it."
+          }
+        },
+        {
+          "h": {
+            "vi": "Multi-head",
+            "en": "Multi-head"
+          },
+          "p": {
+            "vi": "Nhiều 'đầu' attention học các quan hệ khác nhau song song (cú pháp, ngữ nghĩa, vị trí) rồi ghép lại, giúp biểu diễn giàu hơn.",
+            "en": "Multiple attention 'heads' learn different relations in parallel (syntax, meaning, position) and are concatenated for a richer representation."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "cnn-thi-giac-may-tinh",
+      "tag": "Deep Learning",
+      "grad": "linear-gradient(120deg,#34d399,#7c5cff)",
+      "date": "01/06/2026",
+      "read": 8,
+      "title": {
+        "vi": "CNN cho thị giác máy tính: từ convolution đến ResNet",
+        "en": "CNNs for vision: from convolution to ResNet"
+      },
+      "excerpt": {
+        "vi": "Vì sao tích chập và pooling hiệu quả với ảnh, và ResNet giải quyết mạng sâu thế nào.",
+        "en": "Why convolution and pooling work for images, and how ResNet made very deep nets trainable."
+      },
+      "hero": "<svg class=\"hero-svg\" viewBox=\"0 0 400 200\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"rgba(255,255,255,.16)\" stroke-width=\"1.4\"><circle cx=\"330\" cy=\"42\" r=\"66\"/><circle cx=\"362\" cy=\"158\" r=\"42\"/><path d=\"M0 150H400M0 112H400\"/></g><circle cx=\"72\" cy=\"100\" r=\"48\" fill=\"rgba(255,255,255,.15)\"/><text x=\"72\" y=\"118\" font-size=\"46\" text-anchor=\"middle\">🖼️</text></svg>",
+      "fig": "<svg viewBox=\"0 0 720 304\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"inherit\"><rect x=\"80\" y=\"10\" rx=\"8\" width=\"560\" height=\"34\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"360\" y=\"32\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">Ảnh đầu vào / Input image</text><path d=\"M360 44 v8\" stroke=\"var(--brand-2)\" stroke-width=\"2\"/><rect x=\"80\" y=\"52\" rx=\"8\" width=\"560\" height=\"34\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"360\" y=\"74\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">Conv + ReLU</text><path d=\"M360 86 v8\" stroke=\"var(--brand-2)\" stroke-width=\"2\"/><rect x=\"80\" y=\"94\" rx=\"8\" width=\"560\" height=\"34\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"360\" y=\"116\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">Pooling</text><path d=\"M360 128 v8\" stroke=\"var(--brand-2)\" stroke-width=\"2\"/><rect x=\"80\" y=\"136\" rx=\"8\" width=\"560\" height=\"34\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"360\" y=\"158\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">Conv + ReLU</text><path d=\"M360 170 v8\" stroke=\"var(--brand-2)\" stroke-width=\"2\"/><rect x=\"80\" y=\"178\" rx=\"8\" width=\"560\" height=\"34\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"360\" y=\"200\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">Pooling</text><path d=\"M360 212 v8\" stroke=\"var(--brand-2)\" stroke-width=\"2\"/><rect x=\"80\" y=\"220\" rx=\"8\" width=\"560\" height=\"34\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"360\" y=\"242\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">Fully-connected</text><path d=\"M360 254 v8\" stroke=\"var(--brand-2)\" stroke-width=\"2\"/><rect x=\"80\" y=\"262\" rx=\"8\" width=\"560\" height=\"34\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"360\" y=\"284\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">Nhãn / Output</text></svg>",
+      "figCaption": {
+        "vi": "Luồng dữ liệu qua một CNN điển hình",
+        "en": "Data flow through a typical CNN"
+      },
+      "ref": "He et al., Deep Residual Learning for Image Recognition (ResNet, 2015)",
+      "body": [
+        {
+          "h": {
+            "vi": "Tích chập học đặc trưng",
+            "en": "Convolution learns features"
+          },
+          "p": {
+            "vi": "Bộ lọc trượt trên ảnh phát hiện cạnh, góc, kết cấu; chia sẻ trọng số giúp giảm tham số và bất biến với vị trí.",
+            "en": "Filters slide across the image to detect edges, corners and textures; weight sharing cuts parameters and adds translation invariance."
+          }
+        },
+        {
+          "h": {
+            "vi": "Pooling và độ sâu",
+            "en": "Pooling and depth"
+          },
+          "p": {
+            "vi": "Pooling giảm kích thước và tăng tính bất biến. Xếp chồng nhiều lớp cho phép học đặc trưng từ đơn giản đến phức tạp.",
+            "en": "Pooling shrinks feature maps and adds invariance. Stacking layers lets the network learn features from simple to complex."
+          }
+        },
+        {
+          "h": {
+            "vi": "ResNet & skip connection",
+            "en": "ResNet & skip connections"
+          },
+          "p": {
+            "vi": "Kết nối tắt cho gradient chảy qua mạng rất sâu mà không bị triệt tiêu, mở đường cho các mạng hàng trăm lớp.",
+            "en": "Skip connections let gradients flow through very deep networks without vanishing, enabling hundreds of layers."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "xu-ly-mat-can-bang-lop",
+      "tag": "Machine Learning",
+      "grad": "linear-gradient(120deg,#ff5ca8,#22d3ee)",
+      "date": "27/05/2026",
+      "read": 7,
+      "title": {
+        "vi": "Xử lý dữ liệu mất cân bằng lớp",
+        "en": "Handling class imbalance"
+      },
+      "excerpt": {
+        "vi": "Khi lớp hiếm là lớp quan trọng: resampling, trọng số lớp và chọn chỉ số đúng.",
+        "en": "When the rare class is the important one: resampling, class weights and picking the right metric."
+      },
+      "hero": "<svg class=\"hero-svg\" viewBox=\"0 0 400 200\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"rgba(255,255,255,.16)\" stroke-width=\"1.4\"><circle cx=\"330\" cy=\"42\" r=\"66\"/><circle cx=\"362\" cy=\"158\" r=\"42\"/><path d=\"M0 150H400M0 112H400\"/></g><circle cx=\"72\" cy=\"100\" r=\"48\" fill=\"rgba(255,255,255,.15)\"/><text x=\"72\" y=\"118\" font-size=\"46\" text-anchor=\"middle\">⚖️</text></svg>",
+      "fig": "<svg viewBox=\"0 0 720 210\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"inherit\"><rect x=\"0\" y=\"0\" rx=\"12\" width=\"351\" height=\"210\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><rect x=\"0\" y=\"0\" rx=\"12\" width=\"351\" height=\"40\" fill=\"var(--brand-2)\" opacity=\"0.14\"/><text x=\"175.5\" y=\"26\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"800\" fill=\"var(--text)\">Resampling</text><text x=\"16\" y=\"66\" font-size=\"12.5\" fill=\"var(--muted)\">• SMOTE / oversample</text><text x=\"16\" y=\"96\" font-size=\"12.5\" fill=\"var(--muted)\">• Undersample lớp lớn</text><text x=\"16\" y=\"126\" font-size=\"12.5\" fill=\"var(--muted)\">• Làm trong CV</text><text x=\"16\" y=\"156\" font-size=\"12.5\" fill=\"var(--muted)\">• Coi chừng rò rỉ</text><rect x=\"369\" y=\"0\" rx=\"12\" width=\"351\" height=\"210\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><rect x=\"369\" y=\"0\" rx=\"12\" width=\"351\" height=\"40\" fill=\"var(--brand-2)\" opacity=\"0.14\"/><text x=\"544.5\" y=\"26\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"800\" fill=\"var(--text)\">Trọng số &amp; ngưỡng</text><text x=\"385\" y=\"66\" font-size=\"12.5\" fill=\"var(--muted)\">• class_weight</text><text x=\"385\" y=\"96\" font-size=\"12.5\" fill=\"var(--muted)\">• Điều chỉnh threshold</text><text x=\"385\" y=\"126\" font-size=\"12.5\" fill=\"var(--muted)\">• Theo chi phí lỗi</text><text x=\"385\" y=\"156\" font-size=\"12.5\" fill=\"var(--muted)\">• Không đổi dữ liệu</text></svg>",
+      "figCaption": {
+        "vi": "Hai nhóm cách xử lý mất cân bằng",
+        "en": "Two families of imbalance fixes"
+      },
+      "ref": "Chawla et al., SMOTE: Synthetic Minority Over-sampling Technique (2002)",
+      "body": [
+        {
+          "h": {
+            "vi": "Vì sao accuracy đánh lừa",
+            "en": "Why accuracy misleads"
+          },
+          "p": {
+            "vi": "Với 99% âm tính, mô hình đoán 'âm' luôn đạt 99% accuracy nhưng vô dụng. Hãy dùng precision, recall, F1 hoặc PR-AUC.",
+            "en": "At 99% negatives, always predicting 'negative' scores 99% accuracy yet is useless. Use precision, recall, F1 or PR-AUC instead."
+          }
+        },
+        {
+          "h": {
+            "vi": "Resampling",
+            "en": "Resampling"
+          },
+          "p": {
+            "vi": "Oversample lớp hiếm (ví dụ SMOTE) hoặc undersample lớp đa số. Luôn resample bên trong cross-validation để tránh rò rỉ.",
+            "en": "Oversample the minority (e.g. SMOTE) or undersample the majority. Always resample inside cross-validation to avoid leakage."
+          }
+        },
+        {
+          "h": {
+            "vi": "Trọng số & ngưỡng",
+            "en": "Weights & thresholds"
+          },
+          "p": {
+            "vi": "Nhiều thuật toán hỗ trợ class_weight; ngoài ra hãy điều chỉnh ngưỡng quyết định theo chi phí thực của false positive/negative.",
+            "en": "Many algorithms support class_weight; also tune the decision threshold to the real cost of false positives/negatives."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "xgboost-vs-lightgbm",
+      "tag": "Machine Learning",
+      "grad": "linear-gradient(120deg,#7c5cff,#22d3ee)",
+      "date": "22/05/2026",
+      "read": 8,
+      "title": {
+        "vi": "XGBoost vs LightGBM: chọn cái nào?",
+        "en": "XGBoost vs LightGBM: which to pick"
+      },
+      "excerpt": {
+        "vi": "Hai thư viện gradient boosting hàng đầu cho dữ liệu bảng — khác biệt và khi nào dùng.",
+        "en": "Two leading gradient-boosting libraries for tabular data — differences and when to use each."
+      },
+      "hero": "<svg class=\"hero-svg\" viewBox=\"0 0 400 200\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"rgba(255,255,255,.16)\" stroke-width=\"1.4\"><circle cx=\"330\" cy=\"42\" r=\"66\"/><circle cx=\"362\" cy=\"158\" r=\"42\"/><path d=\"M0 150H400M0 112H400\"/></g><circle cx=\"72\" cy=\"100\" r=\"48\" fill=\"rgba(255,255,255,.15)\"/><text x=\"72\" y=\"118\" font-size=\"46\" text-anchor=\"middle\">🌲</text></svg>",
+      "fig": "<svg viewBox=\"0 0 720 210\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"inherit\"><rect x=\"0\" y=\"0\" rx=\"12\" width=\"351\" height=\"210\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><rect x=\"0\" y=\"0\" rx=\"12\" width=\"351\" height=\"40\" fill=\"var(--brand-2)\" opacity=\"0.14\"/><text x=\"175.5\" y=\"26\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"800\" fill=\"var(--text)\">XGBoost</text><text x=\"16\" y=\"66\" font-size=\"12.5\" fill=\"var(--muted)\">• Cây theo mức (level-wise)</text><text x=\"16\" y=\"96\" font-size=\"12.5\" fill=\"var(--muted)\">• Rất ổn định</text><text x=\"16\" y=\"126\" font-size=\"12.5\" fill=\"var(--muted)\">• Regularization mạnh</text><text x=\"16\" y=\"156\" font-size=\"12.5\" fill=\"var(--muted)\">• Tài liệu phong phú</text><rect x=\"369\" y=\"0\" rx=\"12\" width=\"351\" height=\"210\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><rect x=\"369\" y=\"0\" rx=\"12\" width=\"351\" height=\"40\" fill=\"var(--brand-2)\" opacity=\"0.14\"/><text x=\"544.5\" y=\"26\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"800\" fill=\"var(--text)\">LightGBM</text><text x=\"385\" y=\"66\" font-size=\"12.5\" fill=\"var(--muted)\">• Cây theo lá (leaf-wise)</text><text x=\"385\" y=\"96\" font-size=\"12.5\" fill=\"var(--muted)\">• Nhanh, nhẹ</text><text x=\"385\" y=\"126\" font-size=\"12.5\" fill=\"var(--muted)\">• Tốt cho dữ liệu lớn</text><text x=\"385\" y=\"156\" font-size=\"12.5\" fill=\"var(--muted)\">• Coi chừng overfit</text></svg>",
+      "figCaption": {
+        "vi": "So sánh hai thư viện boosting",
+        "en": "Comparing the two boosting libraries"
+      },
+      "ref": "Chen & Guestrin, XGBoost (2016); Ke et al., LightGBM (2017)",
+      "body": [
+        {
+          "h": {
+            "vi": "Cùng ý tưởng, khác chi tiết",
+            "en": "Same idea, different details"
+          },
+          "p": {
+            "vi": "Cả hai xây cây tuần tự để sửa lỗi của cây trước. Khác biệt nằm ở cách phát triển cây và xử lý đặc trưng.",
+            "en": "Both build trees sequentially to correct prior errors. They differ in how trees grow and how features are handled."
+          }
+        },
+        {
+          "h": {
+            "vi": "Tốc độ và bộ nhớ",
+            "en": "Speed and memory"
+          },
+          "p": {
+            "vi": "LightGBM phát triển cây theo lá (leaf-wise) và dùng histogram nên thường nhanh hơn, nhẹ hơn trên dữ liệu lớn.",
+            "en": "LightGBM grows trees leaf-wise with histogram binning, so it is usually faster and lighter on large data."
+          }
+        },
+        {
+          "h": {
+            "vi": "Ổn định và tuning",
+            "en": "Stability and tuning"
+          },
+          "p": {
+            "vi": "XGBoost regularize mạnh, ổn định và tài liệu phong phú. LightGBM dễ overfit trên dữ liệu nhỏ nếu không giới hạn số lá.",
+            "en": "XGBoost regularizes strongly, is stable and well-documented. LightGBM can overfit small data unless you cap the number of leaves."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "feature-engineering-tranh-ro-ri",
+      "tag": "Machine Learning",
+      "grad": "linear-gradient(120deg,#ff5ca8,#ff9d5c)",
+      "date": "17/05/2026",
+      "read": 8,
+      "title": {
+        "vi": "Feature engineering & tránh rò rỉ dữ liệu",
+        "en": "Feature engineering & preventing data leakage"
+      },
+      "excerpt": {
+        "vi": "Đặc trưng tốt thắng mô hình phức tạp — nhưng rò rỉ dữ liệu sẽ thổi phồng kết quả một cách nguy hiểm.",
+        "en": "Good features beat fancy models — but data leakage inflates your results dangerously."
+      },
+      "hero": "<svg class=\"hero-svg\" viewBox=\"0 0 400 200\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"rgba(255,255,255,.16)\" stroke-width=\"1.4\"><circle cx=\"330\" cy=\"42\" r=\"66\"/><circle cx=\"362\" cy=\"158\" r=\"42\"/><path d=\"M0 150H400M0 112H400\"/></g><circle cx=\"72\" cy=\"100\" r=\"48\" fill=\"rgba(255,255,255,.15)\"/><text x=\"72\" y=\"118\" font-size=\"46\" text-anchor=\"middle\">🧬</text></svg>",
+      "fig": "<svg viewBox=\"0 0 720 104\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"inherit\"><rect x=\"0\" y=\"20\" rx=\"10\" width=\"157.5\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"78.75\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Split trước</text><path d=\"M159.5 52 H185.5\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"187.5\" y=\"20\" rx=\"10\" width=\"157.5\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"266.25\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Fit trên train</text><path d=\"M347 52 H373\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"375\" y=\"20\" rx=\"10\" width=\"157.5\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"453.75\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Transform</text><path d=\"M534.5 52 H560.5\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"562.5\" y=\"20\" rx=\"10\" width=\"157.5\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"641.25\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Đánh giá</text><defs><marker id=\"ar\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M0 0L6 3L0 6z\" fill=\"var(--brand-2)\"/></marker></defs></svg>",
+      "figCaption": {
+        "vi": "Thứ tự đúng để tránh rò rỉ",
+        "en": "The correct order to prevent leakage"
+      },
+      "ref": "Kaufman et al., Leakage in Data Mining: Formulation, Detection, and Avoidance (2012)",
+      "body": [
+        {
+          "h": {
+            "vi": "Đặc trưng quan trọng nhất",
+            "en": "Features matter most"
+          },
+          "p": {
+            "vi": "Mã hóa hạng mục, tạo đặc trưng tương tác, tổng hợp theo thời gian thường cải thiện nhiều hơn việc đổi thuật toán.",
+            "en": "Encoding categoricals, building interactions and time-based aggregates often help more than swapping algorithms."
+          }
+        },
+        {
+          "h": {
+            "vi": "Rò rỉ là gì",
+            "en": "What leakage is"
+          },
+          "p": {
+            "vi": "Rò rỉ xảy ra khi thông tin từ tương lai hoặc từ tập test lọt vào lúc huấn luyện — ví dụ scale trên toàn bộ dữ liệu trước khi split.",
+            "en": "Leakage is when future or test-set information sneaks into training — e.g. scaling on the full dataset before splitting."
+          }
+        },
+        {
+          "h": {
+            "vi": "Quy tắc vàng",
+            "en": "The golden rule"
+          },
+          "p": {
+            "vi": "Split trước, rồi fit mọi phép biến đổi chỉ trên tập train (dùng Pipeline). Đánh giá phải mô phỏng đúng lúc dự đoán thật.",
+            "en": "Split first, then fit every transformation on the train set only (use a Pipeline). Evaluation must mirror real prediction time."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "danh-gia-mo-hinh-ngoai-accuracy",
+      "tag": "Machine Learning",
+      "grad": "linear-gradient(120deg,#34d399,#22d3ee)",
+      "date": "12/05/2026",
+      "read": 7,
+      "title": {
+        "vi": "Đánh giá mô hình ngoài accuracy",
+        "en": "Model evaluation beyond accuracy"
+      },
+      "excerpt": {
+        "vi": "Precision, recall, F1, ROC-AUC, PR-AUC và hiệu chỉnh xác suất — chọn chỉ số theo bài toán.",
+        "en": "Precision, recall, F1, ROC-AUC, PR-AUC and calibration — choose metrics to fit the problem."
+      },
+      "hero": "<svg class=\"hero-svg\" viewBox=\"0 0 400 200\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"rgba(255,255,255,.16)\" stroke-width=\"1.4\"><circle cx=\"330\" cy=\"42\" r=\"66\"/><circle cx=\"362\" cy=\"158\" r=\"42\"/><path d=\"M0 150H400M0 112H400\"/></g><circle cx=\"72\" cy=\"100\" r=\"48\" fill=\"rgba(255,255,255,.15)\"/><text x=\"72\" y=\"118\" font-size=\"46\" text-anchor=\"middle\">🎯</text></svg>",
+      "fig": "<svg viewBox=\"0 0 720 210\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"inherit\"><line x1=\"20\" y1=\"170\" x2=\"700\" y2=\"170\" stroke=\"var(--border-strong)\"/><rect x=\"88\" y=\"63.400000000000006\" width=\"70\" height=\"106.6\" rx=\"6\" fill=\"var(--brand-2)\" opacity=\"0.8\"/><text x=\"123\" y=\"55.400000000000006\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"700\" fill=\"var(--text)\">82</text><text x=\"123\" y=\"188\" text-anchor=\"middle\" font-size=\"11.5\" fill=\"var(--muted)\">Precision</text><rect x=\"246\" y=\"86.8\" width=\"70\" height=\"83.2\" rx=\"6\" fill=\"var(--brand-2)\" opacity=\"0.8\"/><text x=\"281\" y=\"78.8\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"700\" fill=\"var(--text)\">64</text><text x=\"281\" y=\"188\" text-anchor=\"middle\" font-size=\"11.5\" fill=\"var(--muted)\">Recall</text><rect x=\"404\" y=\"76.4\" width=\"70\" height=\"93.6\" rx=\"6\" fill=\"var(--brand-2)\" opacity=\"0.8\"/><text x=\"439\" y=\"68.4\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"700\" fill=\"var(--text)\">72</text><text x=\"439\" y=\"188\" text-anchor=\"middle\" font-size=\"11.5\" fill=\"var(--muted)\">F1</text><rect x=\"562\" y=\"69.89999999999999\" width=\"70\" height=\"100.10000000000001\" rx=\"6\" fill=\"var(--brand-2)\" opacity=\"0.8\"/><text x=\"597\" y=\"61.89999999999999\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"700\" fill=\"var(--text)\">77</text><text x=\"597\" y=\"188\" text-anchor=\"middle\" font-size=\"11.5\" fill=\"var(--muted)\">PR-AUC</text></svg>",
+      "figCaption": {
+        "vi": "Một bức tranh nhiều chỉ số thay vì chỉ accuracy",
+        "en": "A multi-metric picture instead of accuracy alone"
+      },
+      "ref": "Davis & Goadrich, The Relationship Between Precision-Recall and ROC Curves (2006)",
+      "body": [
+        {
+          "h": {
+            "vi": "Precision vs recall",
+            "en": "Precision vs recall"
+          },
+          "p": {
+            "vi": "Precision hỏi 'dự đoán dương có đúng không', recall hỏi 'có bắt hết ca dương không'. Cân bằng tùy chi phí sai sót.",
+            "en": "Precision asks 'are positive predictions correct?', recall asks 'did we catch all positives?'. Balance them by the cost of mistakes."
+          }
+        },
+        {
+          "h": {
+            "vi": "ROC-AUC vs PR-AUC",
+            "en": "ROC-AUC vs PR-AUC"
+          },
+          "p": {
+            "vi": "Với dữ liệu mất cân bằng, PR-AUC phản ánh hiệu năng trên lớp hiếm rõ hơn ROC-AUC.",
+            "en": "On imbalanced data, PR-AUC reflects performance on the rare class more honestly than ROC-AUC."
+          }
+        },
+        {
+          "h": {
+            "vi": "Hiệu chỉnh xác suất",
+            "en": "Calibration"
+          },
+          "p": {
+            "vi": "Nếu bạn dùng xác suất để ra quyết định, hãy kiểm tra calibration — điểm 0.8 nên thật sự đúng khoảng 80% số lần.",
+            "en": "If you use probabilities to decide, check calibration — a score of 0.8 should be right about 80% of the time."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "phat-hien-drift-production",
+      "tag": "MLOps",
+      "grad": "linear-gradient(120deg,#7c5cff,#ff5ca8)",
+      "date": "07/05/2026",
+      "read": 8,
+      "title": {
+        "vi": "Phát hiện & xử lý drift trong production",
+        "en": "Detecting & handling drift in production"
+      },
+      "excerpt": {
+        "vi": "Vì sao mô hình xuống cấp theo thời gian và cách dựng vòng giám sát–phát hiện–huấn luyện lại.",
+        "en": "Why models decay over time and how to build a monitor–detect–retrain loop."
+      },
+      "hero": "<svg class=\"hero-svg\" viewBox=\"0 0 400 200\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"rgba(255,255,255,.16)\" stroke-width=\"1.4\"><circle cx=\"330\" cy=\"42\" r=\"66\"/><circle cx=\"362\" cy=\"158\" r=\"42\"/><path d=\"M0 150H400M0 112H400\"/></g><circle cx=\"72\" cy=\"100\" r=\"48\" fill=\"rgba(255,255,255,.15)\"/><text x=\"72\" y=\"118\" font-size=\"46\" text-anchor=\"middle\">📉</text></svg>",
+      "fig": "<svg viewBox=\"0 0 720 230\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"inherit\"><circle cx=\"360\" cy=\"115\" r=\"78\" fill=\"none\" stroke=\"var(--brand-2)\" stroke-width=\"2\" stroke-dasharray=\"6 8\"/><rect x=\"290\" y=\"17\" rx=\"9\" width=\"140\" height=\"40\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"360\" y=\"42\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">Giám sát / Monitor</text><rect x=\"357.5499814951862\" y=\"134\" rx=\"9\" width=\"140\" height=\"40\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"427.5499814951862\" y=\"159\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">Phát hiện / Detect</text><rect x=\"222.45001850481378\" y=\"134.00000000000003\" rx=\"9\" width=\"140\" height=\"40\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"292.4500185048138\" y=\"159.00000000000003\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">Huấn luyện lại / Retrain</text></svg>",
+      "figCaption": {
+        "vi": "Vòng lặp giữ mô hình luôn khỏe",
+        "en": "The loop that keeps models healthy"
+      },
+      "ref": "Gama et al., A Survey on Concept Drift Adaptation (2014)",
+      "body": [
+        {
+          "h": {
+            "vi": "Data drift vs concept drift",
+            "en": "Data drift vs concept drift"
+          },
+          "p": {
+            "vi": "Data drift là phân phối đầu vào thay đổi; concept drift là quan hệ giữa đầu vào và nhãn thay đổi. Cả hai đều làm mô hình kém đi.",
+            "en": "Data drift is a shift in input distribution; concept drift is a change in the input-to-label relationship. Both degrade the model."
+          }
+        },
+        {
+          "h": {
+            "vi": "Giám sát cái gì",
+            "en": "What to monitor"
+          },
+          "p": {
+            "vi": "Theo dõi phân phối đặc trưng, tỉ lệ dự đoán và (khi có nhãn muộn) hiệu năng thực. Cảnh báo khi lệch vượt ngưỡng.",
+            "en": "Track feature distributions, prediction rates and (when labels arrive late) live performance. Alert when drift exceeds a threshold."
+          }
+        },
+        {
+          "h": {
+            "vi": "Đóng vòng lặp",
+            "en": "Close the loop"
+          },
+          "p": {
+            "vi": "Tự động kích hoạt huấn luyện lại hoặc gắn cờ để người xem xét. Không có vòng lặp này, mô hình 'chết' âm thầm.",
+            "en": "Trigger retraining automatically or flag for human review. Without this loop, models die silently."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "experiment-tracking-mlflow",
+      "tag": "MLOps",
+      "grad": "linear-gradient(120deg,#22d3ee,#7c5cff)",
+      "date": "02/05/2026",
+      "read": 7,
+      "title": {
+        "vi": "Experiment tracking & model registry với MLflow",
+        "en": "Experiment tracking & model registry with MLflow"
+      },
+      "excerpt": {
+        "vi": "Ghi lại tham số, chỉ số và artifact để mọi kết quả đều tái lập và so sánh được.",
+        "en": "Log params, metrics and artifacts so every result is reproducible and comparable."
+      },
+      "hero": "<svg class=\"hero-svg\" viewBox=\"0 0 400 200\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"rgba(255,255,255,.16)\" stroke-width=\"1.4\"><circle cx=\"330\" cy=\"42\" r=\"66\"/><circle cx=\"362\" cy=\"158\" r=\"42\"/><path d=\"M0 150H400M0 112H400\"/></g><circle cx=\"72\" cy=\"100\" r=\"48\" fill=\"rgba(255,255,255,.15)\"/><text x=\"72\" y=\"118\" font-size=\"46\" text-anchor=\"middle\">📒</text></svg>",
+      "fig": "<svg viewBox=\"0 0 720 104\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"inherit\"><rect x=\"0\" y=\"20\" rx=\"10\" width=\"157.5\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"78.75\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Huấn luyện</text><path d=\"M159.5 52 H185.5\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"187.5\" y=\"20\" rx=\"10\" width=\"157.5\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"266.25\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Log params/metrics</text><path d=\"M347 52 H373\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"375\" y=\"20\" rx=\"10\" width=\"157.5\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"453.75\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Registry</text><path d=\"M534.5 52 H560.5\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"562.5\" y=\"20\" rx=\"10\" width=\"157.5\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"641.25\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Triển khai</text><defs><marker id=\"ar\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M0 0L6 3L0 6z\" fill=\"var(--brand-2)\"/></marker></defs></svg>",
+      "figCaption": {
+        "vi": "Từ thử nghiệm đến triển khai có kiểm soát",
+        "en": "From experiment to controlled deployment"
+      },
+      "ref": "MLflow documentation (mlflow.org)",
+      "body": [
+        {
+          "h": {
+            "vi": "Vì sao cần tracking",
+            "en": "Why track experiments"
+          },
+          "p": {
+            "vi": "Không ghi lại thì bạn không thể trả lời 'phiên bản nào tốt nhất và vì sao'. Tracking biến thử nghiệm hỗn loạn thành có kỷ luật.",
+            "en": "Without logging you cannot answer 'which version was best and why'. Tracking turns chaotic experimentation into a disciplined process."
+          }
+        },
+        {
+          "h": {
+            "vi": "Ghi gì",
+            "en": "What to log"
+          },
+          "p": {
+            "vi": "Tham số, chỉ số, phiên bản dữ liệu, và artifact (model, biểu đồ). Gắn với commit code để tái lập chính xác.",
+            "en": "Params, metrics, data version and artifacts (models, plots). Tie each run to a code commit for exact reproduction."
+          }
+        },
+        {
+          "h": {
+            "vi": "Model registry",
+            "en": "Model registry"
+          },
+          "p": {
+            "vi": "Registry quản lý vòng đời model qua các giai đoạn (Staging, Production) và giúp rollback nhanh khi cần.",
+            "en": "The registry manages a model's lifecycle across stages (Staging, Production) and enables fast rollback."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "serving-model-batch-vs-realtime",
+      "tag": "MLOps",
+      "grad": "linear-gradient(120deg,#ff9d5c,#ff5ca8)",
+      "date": "27/04/2026",
+      "read": 7,
+      "title": {
+        "vi": "Phục vụ mô hình: batch hay real-time?",
+        "en": "Serving models: batch vs real-time"
+      },
+      "excerpt": {
+        "vi": "Hai kiểu triển khai với ràng buộc độ trễ, chi phí và hạ tầng rất khác nhau.",
+        "en": "Two deployment styles with very different latency, cost and infrastructure constraints."
+      },
+      "hero": "<svg class=\"hero-svg\" viewBox=\"0 0 400 200\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"rgba(255,255,255,.16)\" stroke-width=\"1.4\"><circle cx=\"330\" cy=\"42\" r=\"66\"/><circle cx=\"362\" cy=\"158\" r=\"42\"/><path d=\"M0 150H400M0 112H400\"/></g><circle cx=\"72\" cy=\"100\" r=\"48\" fill=\"rgba(255,255,255,.15)\"/><text x=\"72\" y=\"118\" font-size=\"46\" text-anchor=\"middle\">🚀</text></svg>",
+      "fig": "<svg viewBox=\"0 0 720 210\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"inherit\"><rect x=\"0\" y=\"0\" rx=\"12\" width=\"351\" height=\"210\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><rect x=\"0\" y=\"0\" rx=\"12\" width=\"351\" height=\"40\" fill=\"var(--brand-2)\" opacity=\"0.14\"/><text x=\"175.5\" y=\"26\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"800\" fill=\"var(--text)\">Batch</text><text x=\"16\" y=\"66\" font-size=\"12.5\" fill=\"var(--muted)\">• Chạy theo lịch</text><text x=\"16\" y=\"96\" font-size=\"12.5\" fill=\"var(--muted)\">• Độ trễ cao, chi phí thấp</text><text x=\"16\" y=\"126\" font-size=\"12.5\" fill=\"var(--muted)\">• Hạ tầng đơn giản</text><text x=\"16\" y=\"156\" font-size=\"12.5\" fill=\"var(--muted)\">• VD: chấm điểm hằng đêm</text><rect x=\"369\" y=\"0\" rx=\"12\" width=\"351\" height=\"210\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><rect x=\"369\" y=\"0\" rx=\"12\" width=\"351\" height=\"40\" fill=\"var(--brand-2)\" opacity=\"0.14\"/><text x=\"544.5\" y=\"26\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"800\" fill=\"var(--text)\">Real-time</text><text x=\"385\" y=\"66\" font-size=\"12.5\" fill=\"var(--muted)\">• Theo từng request</text><text x=\"385\" y=\"96\" font-size=\"12.5\" fill=\"var(--muted)\">• Độ trễ mili-giây</text><text x=\"385\" y=\"126\" font-size=\"12.5\" fill=\"var(--muted)\">• Cần scaling &amp; monitor</text><text x=\"385\" y=\"156\" font-size=\"12.5\" fill=\"var(--muted)\">• VD: gợi ý tức thời</text></svg>",
+      "figCaption": {
+        "vi": "Batch vs real-time serving",
+        "en": "Batch vs real-time serving"
+      },
+      "ref": "Google Cloud Vertex AI docs: online vs batch prediction",
+      "body": [
+        {
+          "h": {
+            "vi": "Batch prediction",
+            "en": "Batch prediction"
+          },
+          "p": {
+            "vi": "Chấm điểm theo lô định kỳ (ví dụ hằng đêm) rồi lưu kết quả. Đơn giản, rẻ, phù hợp khi không cần tức thời.",
+            "en": "Score in periodic batches (e.g. nightly) and store the results. Simple, cheap and fine when instant answers aren't needed."
+          }
+        },
+        {
+          "h": {
+            "vi": "Real-time serving",
+            "en": "Real-time serving"
+          },
+          "p": {
+            "vi": "Phơi model qua API để trả lời từng yêu cầu trong mili-giây. Cần lo scaling, giám sát và độ trễ đuôi.",
+            "en": "Expose the model via an API to answer each request in milliseconds. You must handle scaling, monitoring and tail latency."
+          }
+        },
+        {
+          "h": {
+            "vi": "Chọn theo nhu cầu",
+            "en": "Choose by need"
+          },
+          "p": {
+            "vi": "Nếu quyết định phải xảy ra ngay lúc người dùng tương tác thì cần real-time; còn lại, batch thường đủ và tiết kiệm hơn.",
+            "en": "If the decision must happen the moment a user interacts, go real-time; otherwise batch is usually enough and cheaper."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "pipeline-batch-vs-streaming",
+      "tag": "Data Engineering",
+      "grad": "linear-gradient(120deg,#34d399,#7c5cff)",
+      "date": "22/04/2026",
+      "read": 8,
+      "title": {
+        "vi": "Thiết kế pipeline: batch hay streaming?",
+        "en": "Data pipeline design: batch vs streaming"
+      },
+      "excerpt": {
+        "vi": "Xử lý theo lô hay theo dòng — chọn theo yêu cầu độ tươi của dữ liệu và độ phức tạp chấp nhận được.",
+        "en": "Process in batches or as a stream — choose by data-freshness needs and acceptable complexity."
+      },
+      "hero": "<svg class=\"hero-svg\" viewBox=\"0 0 400 200\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"rgba(255,255,255,.16)\" stroke-width=\"1.4\"><circle cx=\"330\" cy=\"42\" r=\"66\"/><circle cx=\"362\" cy=\"158\" r=\"42\"/><path d=\"M0 150H400M0 112H400\"/></g><circle cx=\"72\" cy=\"100\" r=\"48\" fill=\"rgba(255,255,255,.15)\"/><text x=\"72\" y=\"118\" font-size=\"46\" text-anchor=\"middle\">🏗️</text></svg>",
+      "fig": "<svg viewBox=\"0 0 720 210\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"inherit\"><rect x=\"0\" y=\"0\" rx=\"12\" width=\"351\" height=\"210\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><rect x=\"0\" y=\"0\" rx=\"12\" width=\"351\" height=\"40\" fill=\"var(--brand-2)\" opacity=\"0.14\"/><text x=\"175.5\" y=\"26\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"800\" fill=\"var(--text)\">Batch</text><text x=\"16\" y=\"66\" font-size=\"12.5\" fill=\"var(--muted)\">• Xử lý theo khối</text><text x=\"16\" y=\"96\" font-size=\"12.5\" fill=\"var(--muted)\">• Độ trễ phút–giờ</text><text x=\"16\" y=\"126\" font-size=\"12.5\" fill=\"var(--muted)\">• Đơn giản, dễ replay</text><text x=\"16\" y=\"156\" font-size=\"12.5\" fill=\"var(--muted)\">• Spark, dbt</text><rect x=\"369\" y=\"0\" rx=\"12\" width=\"351\" height=\"210\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><rect x=\"369\" y=\"0\" rx=\"12\" width=\"351\" height=\"40\" fill=\"var(--brand-2)\" opacity=\"0.14\"/><text x=\"544.5\" y=\"26\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"800\" fill=\"var(--text)\">Streaming</text><text x=\"385\" y=\"66\" font-size=\"12.5\" fill=\"var(--muted)\">• Xử lý theo sự kiện</text><text x=\"385\" y=\"96\" font-size=\"12.5\" fill=\"var(--muted)\">• Độ trễ giây</text><text x=\"385\" y=\"126\" font-size=\"12.5\" fill=\"var(--muted)\">• Cần quản lý trạng thái</text><text x=\"385\" y=\"156\" font-size=\"12.5\" fill=\"var(--muted)\">• Kafka, Flink</text></svg>",
+      "figCaption": {
+        "vi": "Batch vs streaming: đánh đổi độ tươi và độ phức tạp",
+        "en": "Batch vs streaming: freshness vs complexity"
+      },
+      "ref": "Kleppmann, Designing Data-Intensive Applications (2017)",
+      "body": [
+        {
+          "h": {
+            "vi": "Batch",
+            "en": "Batch"
+          },
+          "p": {
+            "vi": "Gom dữ liệu rồi xử lý theo khối định kỳ. Dễ suy luận, dễ chạy lại, phù hợp báo cáo và tổng hợp.",
+            "en": "Collect data and process it in periodic chunks. Easy to reason about, easy to re-run, ideal for reports and aggregations."
+          }
+        },
+        {
+          "h": {
+            "vi": "Streaming",
+            "en": "Streaming"
+          },
+          "p": {
+            "vi": "Xử lý sự kiện ngay khi đến để có kết quả gần thời gian thực; đổi lại phức tạp hơn về thứ tự, cửa sổ thời gian và trạng thái.",
+            "en": "Process events as they arrive for near-real-time results; the cost is more complexity around ordering, time windows and state."
+          }
+        },
+        {
+          "h": {
+            "vi": "Kiến trúc lai",
+            "en": "Hybrid"
+          },
+          "p": {
+            "vi": "Nhiều hệ thống kết hợp cả hai: streaming cho tức thời, batch cho tính lại chính xác và lịch sử.",
+            "en": "Many systems combine both: streaming for immediacy and batch for accurate recomputation and history."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "dimensional-modeling-star-schema",
+      "tag": "Data Engineering",
+      "grad": "linear-gradient(120deg,#ff5ca8,#22d3ee)",
+      "date": "17/04/2026",
+      "read": 8,
+      "title": {
+        "vi": "Dimensional modeling & star schema",
+        "en": "Dimensional modeling & the star schema"
+      },
+      "excerpt": {
+        "vi": "Cách tổ chức kho dữ liệu để truy vấn phân tích vừa nhanh vừa dễ hiểu.",
+        "en": "How to organize a warehouse so analytical queries are both fast and intuitive."
+      },
+      "hero": "<svg class=\"hero-svg\" viewBox=\"0 0 400 200\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"rgba(255,255,255,.16)\" stroke-width=\"1.4\"><circle cx=\"330\" cy=\"42\" r=\"66\"/><circle cx=\"362\" cy=\"158\" r=\"42\"/><path d=\"M0 150H400M0 112H400\"/></g><circle cx=\"72\" cy=\"100\" r=\"48\" fill=\"rgba(255,255,255,.15)\"/><text x=\"72\" y=\"118\" font-size=\"46\" text-anchor=\"middle\">⭐</text></svg>",
+      "fig": "<svg viewBox=\"0 0 720 250\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"inherit\"><line x1=\"360\" y1=\"125\" x2=\"360\" y2=\"33\" stroke=\"var(--border-strong)\"/><rect x=\"296\" y=\"16\" rx=\"8\" width=\"128\" height=\"34\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"360\" y=\"38\" text-anchor=\"middle\" font-size=\"12\" fill=\"var(--muted)\">Dim Thời gian</text><line x1=\"360\" y1=\"125\" x2=\"452\" y2=\"125\" stroke=\"var(--border-strong)\"/><rect x=\"388\" y=\"108\" rx=\"8\" width=\"128\" height=\"34\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"452\" y=\"130\" text-anchor=\"middle\" font-size=\"12\" fill=\"var(--muted)\">Dim Sản phẩm</text><line x1=\"360\" y1=\"125\" x2=\"360\" y2=\"217\" stroke=\"var(--border-strong)\"/><rect x=\"296\" y=\"200\" rx=\"8\" width=\"128\" height=\"34\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"360\" y=\"222\" text-anchor=\"middle\" font-size=\"12\" fill=\"var(--muted)\">Dim Khách hàng</text><line x1=\"360\" y1=\"125\" x2=\"268\" y2=\"125.00000000000001\" stroke=\"var(--border-strong)\"/><rect x=\"204\" y=\"108.00000000000001\" rx=\"8\" width=\"128\" height=\"34\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"268\" y=\"130\" text-anchor=\"middle\" font-size=\"12\" fill=\"var(--muted)\">Dim Cửa hàng</text><circle cx=\"360\" cy=\"125\" r=\"46\" fill=\"var(--brand-2)\" opacity=\"0.16\" stroke=\"var(--brand-2)\"/><text x=\"360\" y=\"130\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"var(--text)\">Fact</text></svg>",
+      "figCaption": {
+        "vi": "Star schema: một fact bao quanh bởi các dimension",
+        "en": "A star schema: one fact surrounded by dimensions"
+      },
+      "ref": "Kimball & Ross, The Data Warehouse Toolkit (3rd ed., 2013)",
+      "body": [
+        {
+          "h": {
+            "vi": "Fact và dimension",
+            "en": "Facts and dimensions"
+          },
+          "p": {
+            "vi": "Bảng fact chứa các phép đo (doanh thu, số lượng); bảng dimension mô tả ngữ cảnh (thời gian, sản phẩm, khách hàng).",
+            "en": "Fact tables hold measures (revenue, quantity); dimension tables describe context (time, product, customer)."
+          }
+        },
+        {
+          "h": {
+            "vi": "Vì sao dùng star schema",
+            "en": "Why a star schema"
+          },
+          "p": {
+            "vi": "Cấu trúc hình sao giúp câu truy vấn đơn giản, join ít và dễ hiểu cho người phân tích — tối ưu cho đọc, không phải ghi.",
+            "en": "The star shape keeps queries simple with few joins and is intuitive for analysts — optimized for reads, not writes."
+          }
+        },
+        {
+          "h": {
+            "vi": "Slowly Changing Dimensions",
+            "en": "Slowly Changing Dimensions"
+          },
+          "p": {
+            "vi": "Khi thuộc tính thay đổi (khách đổi địa chỉ), SCD quyết định giữ lịch sử hay ghi đè — điều quan trọng cho báo cáo theo thời gian.",
+            "en": "When attributes change (a customer moves), SCD decides whether to keep history or overwrite — crucial for time-based reporting."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "spark-performance-tuning",
+      "tag": "Data Engineering",
+      "grad": "linear-gradient(120deg,#7c5cff,#22d3ee)",
+      "date": "12/04/2026",
+      "read": 9,
+      "title": {
+        "vi": "Tối ưu hiệu năng Apache Spark",
+        "en": "Apache Spark performance tuning"
+      },
+      "excerpt": {
+        "vi": "Partitioning, shuffle và caching — ba thứ quyết định job Spark của bạn nhanh hay chậm.",
+        "en": "Partitioning, shuffles and caching — the three things that decide whether your Spark job flies or crawls."
+      },
+      "hero": "<svg class=\"hero-svg\" viewBox=\"0 0 400 200\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"rgba(255,255,255,.16)\" stroke-width=\"1.4\"><circle cx=\"330\" cy=\"42\" r=\"66\"/><circle cx=\"362\" cy=\"158\" r=\"42\"/><path d=\"M0 150H400M0 112H400\"/></g><circle cx=\"72\" cy=\"100\" r=\"48\" fill=\"rgba(255,255,255,.15)\"/><text x=\"72\" y=\"118\" font-size=\"46\" text-anchor=\"middle\">⚡</text></svg>",
+      "fig": "<svg viewBox=\"0 0 720 104\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"inherit\"><rect x=\"0\" y=\"20\" rx=\"10\" width=\"120\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"60\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Read</text><path d=\"M122 52 H148\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"150\" y=\"20\" rx=\"10\" width=\"120\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"210\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Repartition</text><path d=\"M272 52 H298\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"300\" y=\"20\" rx=\"10\" width=\"120\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"360\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Transform</text><path d=\"M422 52 H448\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"450\" y=\"20\" rx=\"10\" width=\"120\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"510\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Shuffle</text><path d=\"M572 52 H598\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"600\" y=\"20\" rx=\"10\" width=\"120\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"660\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Write</text><defs><marker id=\"ar\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M0 0L6 3L0 6z\" fill=\"var(--brand-2)\"/></marker></defs></svg>",
+      "figCaption": {
+        "vi": "Các điểm cần canh trong một job Spark",
+        "en": "The stages to watch in a Spark job"
+      },
+      "ref": "Apache Spark official Tuning Guide (spark.apache.org)",
+      "body": [
+        {
+          "h": {
+            "vi": "Shuffle là kẻ thù",
+            "en": "Shuffles are the enemy"
+          },
+          "p": {
+            "vi": "Các phép như join và groupBy gây shuffle dữ liệu qua mạng — thường là điểm nghẽn lớn nhất. Giảm và tối ưu shuffle trước tiên.",
+            "en": "Operations like join and groupBy shuffle data across the network — usually the biggest bottleneck. Reduce and optimize shuffles first."
+          }
+        },
+        {
+          "h": {
+            "vi": "Partitioning hợp lý",
+            "en": "Partition sensibly"
+          },
+          "p": {
+            "vi": "Quá ít partition thì không tận dụng cluster; quá nhiều thì tốn overhead. Canh kích thước partition và xử lý data skew.",
+            "en": "Too few partitions underuse the cluster; too many add overhead. Right-size partitions and deal with data skew."
+          }
+        },
+        {
+          "h": {
+            "vi": "Cache đúng chỗ",
+            "en": "Cache wisely"
+          },
+          "p": {
+            "vi": "Cache các DataFrame được dùng lại nhiều lần, nhưng đừng cache bừa vì tốn bộ nhớ. Đọc kế hoạch thực thi để biết nên tối ưu gì.",
+            "en": "Cache DataFrames reused multiple times, but don't over-cache — it eats memory. Read the query plan to know what to optimize."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "kafka-nen-tang-realtime",
+      "tag": "Data Engineering",
+      "grad": "linear-gradient(120deg,#ff5ca8,#ff9d5c)",
+      "date": "07/04/2026",
+      "read": 8,
+      "title": {
+        "vi": "Kafka nền tảng cho dữ liệu thời gian thực",
+        "en": "Kafka fundamentals for real-time data"
+      },
+      "excerpt": {
+        "vi": "Topic, partition, consumer group — mô hình giúp Kafka mở rộng và bền bỉ.",
+        "en": "Topics, partitions and consumer groups — the model that makes Kafka scalable and durable."
+      },
+      "hero": "<svg class=\"hero-svg\" viewBox=\"0 0 400 200\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"rgba(255,255,255,.16)\" stroke-width=\"1.4\"><circle cx=\"330\" cy=\"42\" r=\"66\"/><circle cx=\"362\" cy=\"158\" r=\"42\"/><path d=\"M0 150H400M0 112H400\"/></g><circle cx=\"72\" cy=\"100\" r=\"48\" fill=\"rgba(255,255,255,.15)\"/><text x=\"72\" y=\"118\" font-size=\"46\" text-anchor=\"middle\">🔀</text></svg>",
+      "fig": "<svg viewBox=\"0 0 720 104\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"inherit\"><rect x=\"0\" y=\"20\" rx=\"10\" width=\"157.5\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"78.75\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Producer</text><path d=\"M159.5 52 H185.5\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"187.5\" y=\"20\" rx=\"10\" width=\"157.5\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"266.25\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Topic (partitions)</text><path d=\"M347 52 H373\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"375\" y=\"20\" rx=\"10\" width=\"157.5\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"453.75\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Consumer group</text><path d=\"M534.5 52 H560.5\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"562.5\" y=\"20\" rx=\"10\" width=\"157.5\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"641.25\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Ứng dụng</text><defs><marker id=\"ar\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M0 0L6 3L0 6z\" fill=\"var(--brand-2)\"/></marker></defs></svg>",
+      "figCaption": {
+        "vi": "Luồng dữ liệu qua Kafka",
+        "en": "Data flow through Kafka"
+      },
+      "ref": "Apache Kafka documentation (kafka.apache.org)",
+      "body": [
+        {
+          "h": {
+            "vi": "Topic & partition",
+            "en": "Topics & partitions"
+          },
+          "p": {
+            "vi": "Dữ liệu được ghi vào topic, chia thành partition để song song hóa. Thứ tự được đảm bảo trong từng partition.",
+            "en": "Data is written to topics, split into partitions for parallelism. Ordering is guaranteed within a partition."
+          }
+        },
+        {
+          "h": {
+            "vi": "Producer & consumer",
+            "en": "Producers & consumers"
+          },
+          "p": {
+            "vi": "Producer ghi sự kiện, consumer đọc theo tốc độ của mình. Kafka lưu log bền vững nên consumer có thể đọc lại (replay).",
+            "en": "Producers write events, consumers read at their own pace. Kafka keeps a durable log so consumers can replay."
+          }
+        },
+        {
+          "h": {
+            "vi": "Consumer group",
+            "en": "Consumer groups"
+          },
+          "p": {
+            "vi": "Nhiều consumer trong một group chia nhau các partition để mở rộng thông lượng mà không đọc trùng.",
+            "en": "Multiple consumers in a group split partitions to scale throughput without double-reading."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "ab-testing-dung-cach",
+      "tag": "Data Analyst",
+      "grad": "linear-gradient(120deg,#34d399,#22d3ee)",
+      "date": "02/04/2026",
+      "read": 9,
+      "title": {
+        "vi": "A/B testing đúng cách",
+        "en": "A/B testing done right"
+      },
+      "excerpt": {
+        "vi": "Sức mạnh thống kê, cỡ mẫu, p-value và những cạm bẫy khiến kết luận sai.",
+        "en": "Statistical power, sample size, p-values and the pitfalls that lead to wrong conclusions."
+      },
+      "hero": "<svg class=\"hero-svg\" viewBox=\"0 0 400 200\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"rgba(255,255,255,.16)\" stroke-width=\"1.4\"><circle cx=\"330\" cy=\"42\" r=\"66\"/><circle cx=\"362\" cy=\"158\" r=\"42\"/><path d=\"M0 150H400M0 112H400\"/></g><circle cx=\"72\" cy=\"100\" r=\"48\" fill=\"rgba(255,255,255,.15)\"/><text x=\"72\" y=\"118\" font-size=\"46\" text-anchor=\"middle\">🔬</text></svg>",
+      "fig": "<svg viewBox=\"0 0 720 104\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"inherit\"><rect x=\"0\" y=\"20\" rx=\"10\" width=\"157.5\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"78.75\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Giả thuyết</text><path d=\"M159.5 52 H185.5\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"187.5\" y=\"20\" rx=\"10\" width=\"157.5\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"266.25\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Cỡ mẫu / Power</text><path d=\"M347 52 H373\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"375\" y=\"20\" rx=\"10\" width=\"157.5\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"453.75\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Chạy test</text><path d=\"M534.5 52 H560.5\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"562.5\" y=\"20\" rx=\"10\" width=\"157.5\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"641.25\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Phân tích</text><defs><marker id=\"ar\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M0 0L6 3L0 6z\" fill=\"var(--brand-2)\"/></marker></defs></svg>",
+      "figCaption": {
+        "vi": "Quy trình một thí nghiệm A/B đáng tin",
+        "en": "A trustworthy A/B test workflow"
+      },
+      "ref": "Kohavi, Tang & Xu, Trustworthy Online Controlled Experiments (2020)",
+      "body": [
+        {
+          "h": {
+            "vi": "Thiết kế trước khi chạy",
+            "en": "Design before you run"
+          },
+          "p": {
+            "vi": "Xác định chỉ số chính, hiệu ứng tối thiểu đáng quan tâm và cỡ mẫu cần thiết trước — không quyết định khi đang chạy.",
+            "en": "Fix the primary metric, the minimum effect worth detecting and the required sample size up front — don't decide mid-flight."
+          }
+        },
+        {
+          "h": {
+            "vi": "Đừng peek liên tục",
+            "en": "Don't peek repeatedly"
+          },
+          "p": {
+            "vi": "Nhìn kết quả liên tục và dừng khi vừa 'có ý nghĩa' làm tăng mạnh tỉ lệ dương tính giả. Hãy chạy đủ thời gian đã định.",
+            "en": "Continuously peeking and stopping the moment it looks 'significant' inflates false positives. Run for the pre-planned duration."
+          }
+        },
+        {
+          "h": {
+            "vi": "Diễn giải cẩn thận",
+            "en": "Interpret carefully"
+          },
+          "p": {
+            "vi": "p-value không phải xác suất giả thuyết đúng. Báo cáo cả khoảng tin cậy và ý nghĩa thực tiễn, không chỉ 'có ý nghĩa hay không'.",
+            "en": "A p-value is not the probability the hypothesis is true. Report confidence intervals and practical significance, not just pass/fail."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "sql-window-functions-phan-tich",
+      "tag": "SQL",
+      "grad": "linear-gradient(120deg,#7c5cff,#ff5ca8)",
+      "date": "28/03/2026",
+      "read": 7,
+      "title": {
+        "vi": "SQL window functions cho phân tích",
+        "en": "SQL window functions for analytics"
+      },
+      "excerpt": {
+        "vi": "ROW_NUMBER, RANK, LAG/LEAD và running total — công cụ 'đặc sản' của phân tích dữ liệu.",
+        "en": "ROW_NUMBER, RANK, LAG/LEAD and running totals — the analyst's power tools."
+      },
+      "hero": "<svg class=\"hero-svg\" viewBox=\"0 0 400 200\" preserveAspectRatio=\"xMidYMid slice\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"rgba(255,255,255,.16)\" stroke-width=\"1.4\"><circle cx=\"330\" cy=\"42\" r=\"66\"/><circle cx=\"362\" cy=\"158\" r=\"42\"/><path d=\"M0 150H400M0 112H400\"/></g><circle cx=\"72\" cy=\"100\" r=\"48\" fill=\"rgba(255,255,255,.15)\"/><text x=\"72\" y=\"118\" font-size=\"46\" text-anchor=\"middle\">🪟</text></svg>",
+      "fig": "<svg viewBox=\"0 0 720 104\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"inherit\"><rect x=\"0\" y=\"20\" rx=\"10\" width=\"157.5\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"78.75\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">PARTITION BY</text><path d=\"M159.5 52 H185.5\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"187.5\" y=\"20\" rx=\"10\" width=\"157.5\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"266.25\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">ORDER BY</text><path d=\"M347 52 H373\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"375\" y=\"20\" rx=\"10\" width=\"157.5\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"453.75\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Frame</text><path d=\"M534.5 52 H560.5\" stroke=\"var(--brand-2)\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><rect x=\"562.5\" y=\"20\" rx=\"10\" width=\"157.5\" height=\"64\" fill=\"var(--surface-2)\" stroke=\"var(--border-strong)\"/><text x=\"641.25\" y=\"57\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Kết quả từng dòng</text><defs><marker id=\"ar\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M0 0L6 3L0 6z\" fill=\"var(--brand-2)\"/></marker></defs></svg>",
+      "figCaption": {
+        "vi": "Cách một window function được tính",
+        "en": "How a window function is evaluated"
+      },
+      "ref": "PostgreSQL documentation: Window Functions",
+      "body": [
+        {
+          "h": {
+            "vi": "Window khác GROUP BY thế nào",
+            "en": "How windows differ from GROUP BY"
+          },
+          "p": {
+            "vi": "GROUP BY gộp hàng lại; window function tính toán trên một 'cửa sổ' hàng nhưng vẫn giữ nguyên từng dòng — lý tưởng cho xếp hạng và so sánh.",
+            "en": "GROUP BY collapses rows; a window function computes over a 'window' of rows while keeping each row — ideal for ranking and comparisons."
+          }
+        },
+        {
+          "h": {
+            "vi": "PARTITION BY & ORDER BY",
+            "en": "PARTITION BY & ORDER BY"
+          },
+          "p": {
+            "vi": "PARTITION chia dữ liệu thành nhóm, ORDER quyết định thứ tự trong nhóm. Đây là nền tảng cho top-N theo nhóm.",
+            "en": "PARTITION splits data into groups, ORDER sets the order within each. This is the basis for top-N-per-group."
+          }
+        },
+        {
+          "h": {
+            "vi": "Bài toán thường gặp",
+            "en": "Common problems"
+          },
+          "p": {
+            "vi": "Running total, so với kỳ trước bằng LAG, và lấy bản ghi mới nhất mỗi nhóm là những dạng bài phỏng vấn hay gặp.",
+            "en": "Running totals, period-over-period with LAG, and latest-record-per-group are frequent interview patterns."
+          }
+        }
       ]
     }
   ]
@@ -1236,7 +2256,7 @@ function renderDynamic() {
           .map(
             (p) => `
       <a class="post reveal" href="post.html?slug=${p.slug}">
-        <div class="post-thumb" style="background:${p.grad}"><span>${p.tag}</span></div>
+        <div class="post-thumb" style="background:${p.grad}">${p.hero || ""}<span>${p.tag}</span></div>
         <div class="post-body">
           <div class="post-meta">${p.date} · ${p.read} ${minWord}</div>
           <h3>${T(p.title)}</h3>
@@ -1497,10 +2517,11 @@ function renderDynamic() {
           <h1>${T(p.title)}</h1>
           <div class="post-meta">${p.date} · ${p.read} ${minWord}</div>
         </div>
-        <div class="article-thumb" style="background:${p.grad}"></div>
+        <div class="article-thumb" style="background:${p.grad}">${p.hero || ""}</div>
         <div class="container-narrow article-body">
           <p class="article-lead">${T(p.excerpt)}</p>
-          ${p.body.map((s) => `<h2>${T(s.h)}</h2><p>${T(s.p)}</p>`).join("")}
+          ${p.body.map((s, i) => `<h2>${T(s.h)}</h2><p>${T(s.p)}</p>` + (i === 0 && p.fig ? `<figure class="article-fig">${p.fig}${p.figCaption ? `<figcaption>${T(p.figCaption)}</figcaption>` : ""}</figure>` : "")).join("")}
+          ${p.ref ? `<p class="article-ref"><b>${IS_VI() ? "Nguồn tham khảo" : "Reference"}:</b> ${esc(p.ref)}</p>` : ""}
           ${shareRow}
         </div>
       </article>`;
