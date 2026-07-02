@@ -455,9 +455,9 @@ const DATA = {
     { name: "Data Engineer", track: "de" },
     { name: "AI & Data Scientist", track: "ds" },
     { name: "Machine Learning", track: "ml" },
-    { name: "AI Engineer", track: "ml" },
-    { name: "MLOps", track: "de" },
-    { name: "Python for Data Analysis", track: "da" },
+    { name: "AI Engineer", track: "aieng" },
+    { name: "MLOps", track: "mlops" },
+    { name: "Python for Data Analysis", track: "pyda" },
     { name: "Backend", soon: true },
     { name: "DevOps", soon: true },
     { name: "Full Stack", soon: true },
@@ -821,12 +821,12 @@ const DATA = {
       ]
     },
     {
-      id: "ml", cat: "ai", role: "AI / ML Engineer", salary: "20 – 60 triệu/tháng",
+      id: "ml", cat: "ai", role: "Machine Learning Engineer", salary: "20 – 60 triệu/tháng",
       stages: [
         { label: { vi: "Chưa biết gì", en: "Zero" }, skills: ["Python", "Toán & Xác suất", "NumPy / pandas"], course: { vi: "Nền tảng ML", en: "ML foundations" }, weeks: 3 },
         { label: { vi: "Nền tảng", en: "Foundation" }, skills: ["Scikit-learn", "Feature engineering", "Đánh giá mô hình"], course: { vi: "Machine Learning thực chiến", en: "Practical Machine Learning" }, weeks: 4 },
         { label: { vi: "Chuyên sâu", en: "Core skills" }, skills: ["PyTorch", "CNN / RNN / Transformer", "NLP & CV"], course: { vi: "Deep Learning với PyTorch", en: "Deep Learning with PyTorch" }, weeks: 4 },
-        { label: { vi: "Sẵn sàng đi làm", en: "Job-ready" }, skills: ["LLM", "RAG", "Agent", "MLOps & Deploy"], course: { vi: "AI Engineer: LLM & RAG", en: "AI Engineer: LLM & RAG" }, weeks: 4 }
+        { label: { vi: "Sẵn sàng đi làm", en: "Job-ready" }, skills: ["MLOps & Deploy", "Kaggle", "Portfolio dự án ML"], course: { vi: "MLOps & Deployment", en: "MLOps & Deployment" }, weeks: 3 }
       ]
     },
     {
@@ -836,6 +836,33 @@ const DATA = {
         { label: { vi: "Nền tảng", en: "Foundation" }, skills: ["EDA", "Trực quan hóa", "A/B testing"], course: { vi: "Data Science nền tảng", en: "Data Science Foundations" }, weeks: 3 },
         { label: { vi: "Chuyên sâu", en: "Core skills" }, skills: ["Machine Learning", "Feature engineering", "Mô hình dự báo"], course: { vi: "Machine Learning thực chiến", en: "Practical Machine Learning" }, weeks: 4 },
         { label: { vi: "Sẵn sàng đi làm", en: "Job-ready" }, skills: ["Business case", "Model deploy", "Portfolio"], course: { vi: "MLOps & Deployment", en: "MLOps & Deployment" }, weeks: 3 }
+      ]
+    },
+    {
+      id: "aieng", cat: "ai", role: "AI Engineer", salary: "20 – 60 triệu/tháng",
+      stages: [
+        { label: { vi: "Chưa biết gì", en: "Zero" }, skills: ["Python", "Gọi API LLM", "Prompt cơ bản"], course: { vi: "Nền tảng lập trình", en: "Programming foundations" }, weeks: 2 },
+        { label: { vi: "Nền tảng", en: "Foundation" }, skills: ["Prompt engineering", "Embeddings", "Vector database"], course: { vi: "AI Engineer: LLM & RAG", en: "AI Engineer: LLM & RAG" }, weeks: 3 },
+        { label: { vi: "Chuyên sâu", en: "Core skills" }, skills: ["RAG", "Function calling", "AI Agents"], course: { vi: "AI Engineer: LLM & RAG", en: "AI Engineer: LLM & RAG" }, weeks: 4 },
+        { label: { vi: "Sẵn sàng đi làm", en: "Job-ready" }, skills: ["Đánh giá LLM", "Guardrails & an toàn", "Deploy app AI", "Portfolio"], course: { vi: "MLOps & Deployment", en: "MLOps & Deployment" }, weeks: 3 }
+      ]
+    },
+    {
+      id: "mlops", cat: "ml", role: "MLOps Engineer", salary: "20 – 55 triệu/tháng",
+      stages: [
+        { label: { vi: "Chưa biết gì", en: "Zero" }, skills: ["Python", "Git", "Linux / Bash", "Docker cơ bản"], course: { vi: "Nền tảng lập trình", en: "Programming foundations" }, weeks: 3 },
+        { label: { vi: "Nền tảng", en: "Foundation" }, skills: ["ML cơ bản", "MLflow tracking", "Data/Model versioning"], course: { vi: "MLOps & Deployment", en: "MLOps & Deployment" }, weeks: 3 },
+        { label: { vi: "Chuyên sâu", en: "Core skills" }, skills: ["CI/CD", "Docker & Kubernetes", "Model serving", "Cloud"], course: { vi: "MLOps & Deployment", en: "MLOps & Deployment" }, weeks: 4 },
+        { label: { vi: "Sẵn sàng đi làm", en: "Job-ready" }, skills: ["Giám sát drift", "Prometheus / Grafana", "IaC (Terraform)", "Portfolio"], course: { vi: "MLOps & Deployment", en: "MLOps & Deployment" }, weeks: 3 }
+      ]
+    },
+    {
+      id: "pyda", cat: "eng", role: "Python for Data Analysis", salary: "10 – 22 triệu/tháng",
+      stages: [
+        { label: { vi: "Chưa biết gì", en: "Zero" }, skills: ["Python cơ bản", "Cấu trúc dữ liệu", "Jupyter"], course: { vi: "Data Science nền tảng", en: "Data Science Foundations" }, weeks: 2 },
+        { label: { vi: "Nền tảng", en: "Foundation" }, skills: ["pandas", "NumPy", "Làm sạch dữ liệu"], course: { vi: "Data Science nền tảng", en: "Data Science Foundations" }, weeks: 3 },
+        { label: { vi: "Chuyên sâu", en: "Core skills" }, skills: ["Trực quan hóa", "Thống kê ứng dụng", "SQL"], course: { vi: "Data Science nền tảng", en: "Data Science Foundations" }, weeks: 2 },
+        { label: { vi: "Sẵn sàng đi làm", en: "Job-ready" }, skills: ["EDA end-to-end", "Dashboard", "Portfolio", "Storytelling"], course: { vi: "Career: CV & phỏng vấn", en: "Career: CV & interview" }, weeks: 2 }
       ]
     }
   ],
