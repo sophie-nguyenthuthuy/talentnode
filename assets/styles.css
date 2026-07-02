@@ -330,6 +330,8 @@ section { padding: 84px 0; }
 .article-fig svg { display: block; width: 100%; height: auto; }
 .article-fig figcaption { margin-top: 12px; text-align: center; color: var(--muted); font-size: .88rem; }
 .article-ref { font-size: .9rem; color: var(--muted); border-left: 3px solid var(--brand-2); padding: 6px 0 6px 14px; margin: 26px 0 0; }
+.article-code { background: #0d1117; color: #e6edf3; border: 1px solid var(--border-strong); border-radius: 12px; padding: 16px 18px; margin: 18px 0 22px; overflow-x: auto; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .86rem; line-height: 1.6; }
+.article-code code { white-space: pre; font-family: inherit; }
 .article-lead { font-size: 1.2rem; color: var(--text); font-weight: 500; margin-bottom: 26px; }
 .article-body h2 { font-size: 1.4rem; margin: 34px 0 12px; }
 .article-body p { color: var(--muted); font-size: 1.05rem; line-height: 1.8; margin: 0 0 18px; }
