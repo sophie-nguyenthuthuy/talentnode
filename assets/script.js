@@ -101,8 +101,10 @@ const I18N = {
     "course.ml.d": "Từ hồi quy đến ensemble, feature engineering, đánh giá mô hình và đưa model lên production.",
     "course.ai.t": "AI Engineer: LLM & RAG",
     "course.ai.d": "Xây ứng dụng với LLM, RAG, agent, fine-tuning và đánh giá — kèm MLOps cho hệ AI.",
-    "course.ds.t": "Data Science nền tảng",
-    "course.ds.d": "Thống kê, phân tích dữ liệu, trực quan hóa và storytelling cho quyết định kinh doanh.",
+    "course.ds.t": "AI & Data Scientist",
+    "course.ds.d": "Toán, thống kê, Machine Learning, Deep Learning và đưa mô hình vào quyết định.",
+    "course.da.t": "Data Analyst: Phân tích dữ liệu",
+    "course.pyda.t": "Python for Data Analysis",
     "course.mlops.t": "MLOps & Deployment",
     "course.mlops.d": "CI/CD cho ML, giám sát drift, MLflow, Docker, Kubernetes và triển khai đa cloud.",
     "course.dl.t": "Deep Learning với PyTorch",
@@ -201,9 +203,10 @@ const I18N = {
     "footer.c_de": "Data Engineering Zero → Hero",
     "footer.c_ml": "Machine Learning thực chiến",
     "footer.c_ai": "AI Engineer: LLM & RAG",
-    "footer.c_ds": "Data Science nền tảng",
+    "footer.c_ds": "AI & Data Scientist",
     "footer.c_mlops": "MLOps & Deployment",
-    "footer.c_dl": "Deep Learning với PyTorch",
+    "footer.c_da": "Data Analyst",
+    "footer.c_pyda": "Python for Data Analysis",
     "footer.contactH": "Liên hệ",
     "footer.follow": "Theo dõi",
     "footer.rights": "© 2026 TalentNode. Bảo lưu mọi quyền.",
@@ -310,8 +313,10 @@ const I18N = {
     "course.ml.d": "From regression to ensembles, feature engineering, model evaluation and shipping to production.",
     "course.ai.t": "AI Engineer: LLM & RAG",
     "course.ai.d": "Build apps with LLMs, RAG, agents, fine-tuning and evaluation — plus MLOps for AI systems.",
-    "course.ds.t": "Data Science Foundations",
-    "course.ds.d": "Statistics, data analysis, visualization and storytelling for business decisions.",
+    "course.ds.t": "AI & Data Scientist",
+    "course.ds.d": "Math, statistics, Machine Learning, Deep Learning and turning models into decisions.",
+    "course.da.t": "Data Analyst",
+    "course.pyda.t": "Python for Data Analysis",
     "course.mlops.t": "MLOps & Deployment",
     "course.mlops.d": "CI/CD for ML, drift monitoring, MLflow, Docker, Kubernetes and multi-cloud deployment.",
     "course.dl.t": "Deep Learning with PyTorch",
@@ -410,9 +415,10 @@ const I18N = {
     "footer.c_de": "Data Engineering Zero → Hero",
     "footer.c_ml": "Practical Machine Learning",
     "footer.c_ai": "AI Engineer: LLM & RAG",
-    "footer.c_ds": "Data Science Foundations",
+    "footer.c_ds": "AI & Data Scientist",
     "footer.c_mlops": "MLOps & Deployment",
-    "footer.c_dl": "Deep Learning with PyTorch",
+    "footer.c_da": "Data Analyst",
+    "footer.c_pyda": "Python for Data Analysis",
     "footer.contactH": "Contact",
     "footer.follow": "Follow",
     "footer.rights": "© 2026 TalentNode. All rights reserved.",
@@ -479,166 +485,691 @@ const DATA = {
 
   courses: [
     {
-      id: "de", cat: "data", tagClass: "data", tagLabel: { vi: "Data Engineering", en: "Data Engineering" },
-      title: { vi: "Data Engineering Zero → Hero", en: "Data Engineering Zero → Hero" },
-      tagline: { vi: "Dựng pipeline dữ liệu production từ số 0 — SQL, Spark, Kafka, dbt, Airflow và lakehouse.", en: "Build production data pipelines from scratch — SQL, Spark, Kafka, dbt, Airflow and lakehouse." },
-      price: "7.900.000đ", old: "18.900.000đ", studentPrice: "5.900.000đ", weeks: 12, projects: 5,
-      level: { vi: "Cơ bản → Trung cấp", en: "Beginner → Intermediate" }, format: { vi: "Online", en: "Online" },
-      outcomes: [
-        { vi: "Thiết kế & vận hành pipeline batch và streaming", en: "Design & run batch and streaming pipelines" },
-        { vi: "Mô hình hóa dữ liệu và xây lakehouse", en: "Data modeling and building a lakehouse" },
-        { vi: "Xử lý dữ liệu lớn với Spark, streaming với Kafka", en: "Big data with Spark, streaming with Kafka" },
-        { vi: "Orchestrate với Airflow, transform với dbt", en: "Orchestrate with Airflow, transform with dbt" },
-        { vi: "Triển khai lên cloud kèm CI/CD", en: "Deploy to the cloud with CI/CD" }
+      "id": "da",
+      "cat": "ds",
+      "tagClass": "eng",
+      "tagLabel": {
+        "vi": "Data Analyst",
+        "en": "Data Analyst"
+      },
+      "title": {
+        "vi": "Data Analyst: Phân tích dữ liệu",
+        "en": "Data Analyst"
+      },
+      "tagline": {
+        "vi": "Excel, SQL, Python, thống kê, trực quan hóa và storytelling cho quyết định kinh doanh.",
+        "en": "Excel, SQL, Python, statistics, visualization and storytelling for business decisions."
+      },
+      "price": "5.900.000đ",
+      "old": "14.900.000đ",
+      "studentPrice": "4.400.000đ",
+      "weeks": 8,
+      "projects": 3,
+      "level": {
+        "vi": "Cơ bản",
+        "en": "Beginner"
+      },
+      "format": {
+        "vi": "Online",
+        "en": "Online"
+      },
+      "outcomes": [
+        {
+          "vi": "Phân tích dữ liệu với Python & SQL",
+          "en": "Analyze data with Python & SQL"
+        },
+        {
+          "vi": "Kiểm định giả thuyết & A/B testing",
+          "en": "Hypothesis testing & A/B testing"
+        },
+        {
+          "vi": "Trực quan hóa & xây dashboard (Power BI)",
+          "en": "Visualization & dashboards (Power BI)"
+        },
+        {
+          "vi": "Storytelling dữ liệu cho quyết định",
+          "en": "Data storytelling for decisions"
+        }
       ],
-      curriculum: [
-        { vi: "Nền tảng: Linux, Git, Python & SQL nâng cao", en: "Foundations: Linux, Git, Python & advanced SQL" },
-        { vi: "Mô hình dữ liệu & Data Warehouse (star schema, dbt)", en: "Data modeling & warehousing (star schema, dbt)" },
-        { vi: "Xử lý dữ liệu lớn với Apache Spark", en: "Big data processing with Apache Spark" },
-        { vi: "Streaming với Kafka & xử lý thời gian thực", en: "Streaming with Kafka & real-time processing" },
-        { vi: "Orchestration với Airflow & Lakehouse (Delta/Iceberg)", en: "Orchestration with Airflow & Lakehouse (Delta/Iceberg)" },
-        { vi: "Đồ án cuối: pipeline end-to-end trên cloud", en: "Capstone: an end-to-end pipeline on the cloud" }
+      "curriculum": [
+        {
+          "vi": "Excel & tư duy phân tích",
+          "en": "Excel & analytical thinking"
+        },
+        {
+          "vi": "SQL cho phân tích",
+          "en": "SQL for analytics"
+        },
+        {
+          "vi": "Python & pandas",
+          "en": "Python & pandas"
+        },
+        {
+          "vi": "Thống kê & A/B testing",
+          "en": "Statistics & A/B testing"
+        },
+        {
+          "vi": "Trực quan hóa & dashboard/BI",
+          "en": "Visualization & dashboards/BI"
+        },
+        {
+          "vi": "Đồ án: phân tích sản phẩm end-to-end",
+          "en": "Project: end-to-end product analysis"
+        }
       ],
-      tools: ["Python", "SQL", "PostgreSQL", "Apache Spark", "Kafka", "dbt", "Airflow", "Docker", "AWS"],
-      audience: [
-        { vi: "Người mới muốn vào nghề Data Engineer", en: "Newcomers aiming for a Data Engineer role" },
-        { vi: "Lập trình viên / Data Analyst muốn chuyển sang DE", en: "Developers / Data Analysts moving into DE" },
-        { vi: "Sinh viên IT muốn có portfolio thực chiến", en: "IT students who want a real portfolio" }
+      "tools": [
+        "Excel",
+        "SQL",
+        "Python",
+        "pandas",
+        "Power BI",
+        "Matplotlib",
+        "Seaborn"
+      ],
+      "audience": [
+        {
+          "vi": "Người mới bắt đầu với dữ liệu",
+          "en": "Complete beginners with data"
+        },
+        {
+          "vi": "Muốn làm Data Analyst / BI",
+          "en": "Aiming for Data Analyst / BI"
+        },
+        {
+          "vi": "Dân kinh doanh muốn ra quyết định bằng dữ liệu",
+          "en": "Business folks who want data-driven decisions"
+        }
       ]
     },
     {
-      id: "ml", cat: "ml", tagClass: "ml", tagLabel: { vi: "Machine Learning", en: "Machine Learning" },
-      title: { vi: "Machine Learning thực chiến", en: "Practical Machine Learning" },
-      tagline: { vi: "Từ hồi quy đến ensemble, feature engineering và đưa mô hình lên production.", en: "From regression to ensembles, feature engineering and shipping models to production." },
-      price: "7.900.000đ", old: "19.900.000đ", studentPrice: "5.900.000đ", weeks: 10, projects: 4,
-      level: { vi: "Trung cấp", en: "Intermediate" }, format: { vi: "Online", en: "Online" },
-      outcomes: [
-        { vi: "Nắm quy trình ML end-to-end", en: "Master the end-to-end ML workflow" },
-        { vi: "Feature engineering & xây pipeline", en: "Feature engineering & building pipelines" },
-        { vi: "Đánh giá, tuning và tránh overfitting/leakage", en: "Evaluate, tune and avoid overfitting/leakage" },
-        { vi: "Đưa mô hình thành API phục vụ thực tế", en: "Serve models as a real-world API" }
+      "id": "de",
+      "cat": "data",
+      "tagClass": "data",
+      "tagLabel": {
+        "vi": "Data Engineering",
+        "en": "Data Engineering"
+      },
+      "title": {
+        "vi": "Data Engineering Zero → Hero",
+        "en": "Data Engineering Zero → Hero"
+      },
+      "tagline": {
+        "vi": "Dựng pipeline dữ liệu production từ số 0 — SQL, Spark, Kafka, dbt, Airflow và lakehouse.",
+        "en": "Build production data pipelines from scratch — SQL, Spark, Kafka, dbt, Airflow and lakehouse."
+      },
+      "price": "7.900.000đ",
+      "old": "18.900.000đ",
+      "studentPrice": "5.900.000đ",
+      "weeks": 12,
+      "projects": 5,
+      "level": {
+        "vi": "Cơ bản → Trung cấp",
+        "en": "Beginner → Intermediate"
+      },
+      "format": {
+        "vi": "Online",
+        "en": "Online"
+      },
+      "outcomes": [
+        {
+          "vi": "Thiết kế & vận hành pipeline batch và streaming",
+          "en": "Design & run batch and streaming pipelines"
+        },
+        {
+          "vi": "Mô hình hóa dữ liệu và xây lakehouse",
+          "en": "Data modeling and building a lakehouse"
+        },
+        {
+          "vi": "Xử lý dữ liệu lớn với Spark, streaming với Kafka",
+          "en": "Big data with Spark, streaming with Kafka"
+        },
+        {
+          "vi": "Orchestrate với Airflow, transform với dbt",
+          "en": "Orchestrate with Airflow, transform with dbt"
+        },
+        {
+          "vi": "Triển khai lên cloud kèm CI/CD",
+          "en": "Deploy to the cloud with CI/CD"
+        }
       ],
-      curriculum: [
-        { vi: "Toán & Python cho Machine Learning", en: "Math & Python for Machine Learning" },
-        { vi: "Hồi quy & phân loại", en: "Regression & classification" },
-        { vi: "Feature engineering & pipeline", en: "Feature engineering & pipelines" },
-        { vi: "Ensemble: Random Forest, XGBoost", en: "Ensembles: Random Forest, XGBoost" },
-        { vi: "Đánh giá, tuning & cross-validation", en: "Evaluation, tuning & cross-validation" },
-        { vi: "Đồ án: dự đoán churn + deploy API", en: "Project: churn prediction + API deploy" }
+      "curriculum": [
+        {
+          "vi": "Nền tảng: Linux, Git, Python & SQL nâng cao",
+          "en": "Foundations: Linux, Git, Python & advanced SQL"
+        },
+        {
+          "vi": "Mô hình dữ liệu & Data Warehouse (star schema, dbt)",
+          "en": "Data modeling & warehousing (star schema, dbt)"
+        },
+        {
+          "vi": "Xử lý dữ liệu lớn với Apache Spark",
+          "en": "Big data processing with Apache Spark"
+        },
+        {
+          "vi": "Streaming với Kafka & xử lý thời gian thực",
+          "en": "Streaming with Kafka & real-time processing"
+        },
+        {
+          "vi": "Orchestration với Airflow & Lakehouse (Delta/Iceberg)",
+          "en": "Orchestration with Airflow & Lakehouse (Delta/Iceberg)"
+        },
+        {
+          "vi": "Đồ án cuối: pipeline end-to-end trên cloud",
+          "en": "Capstone: an end-to-end pipeline on the cloud"
+        }
       ],
-      tools: ["Python", "NumPy", "pandas", "scikit-learn", "XGBoost", "Matplotlib", "FastAPI"],
-      audience: [
-        { vi: "Biết Python cơ bản, muốn vào ML", en: "Know basic Python, want to break into ML" },
-        { vi: "Data Analyst muốn lên Data Scientist / ML", en: "Analysts leveling up to Data Scientist / ML" },
-        { vi: "Kỹ sư phần mềm muốn thêm kỹ năng ML", en: "Software engineers adding ML skills" }
+      "tools": [
+        "Python",
+        "SQL",
+        "PostgreSQL",
+        "Apache Spark",
+        "Kafka",
+        "dbt",
+        "Airflow",
+        "Docker",
+        "AWS"
+      ],
+      "audience": [
+        {
+          "vi": "Người mới muốn vào nghề Data Engineer",
+          "en": "Newcomers aiming for a Data Engineer role"
+        },
+        {
+          "vi": "Lập trình viên / Data Analyst muốn chuyển sang DE",
+          "en": "Developers / Data Analysts moving into DE"
+        },
+        {
+          "vi": "Sinh viên IT muốn có portfolio thực chiến",
+          "en": "IT students who want a real portfolio"
+        }
       ]
     },
     {
-      id: "ai", cat: "ai", tagClass: "ai", tagLabel: { vi: "AI / LLM", en: "AI / LLM" },
-      title: { vi: "AI Engineer: LLM & RAG", en: "AI Engineer: LLM & RAG" },
-      tagline: { vi: "Xây ứng dụng LLM thực chiến — RAG, agent, fine-tuning, đánh giá và MLOps cho AI.", en: "Build real LLM apps — RAG, agents, fine-tuning, evaluation and MLOps for AI." },
-      price: "8.900.000đ", old: "22.900.000đ", studentPrice: "6.700.000đ", weeks: 10, projects: 4,
-      level: { vi: "Nâng cao", en: "Advanced" }, format: { vi: "Online", en: "Online" },
-      outcomes: [
-        { vi: "Xây RAG pipeline end-to-end", en: "Build an end-to-end RAG pipeline" },
-        { vi: "Dùng embeddings & vector database", en: "Use embeddings & vector databases" },
-        { vi: "Thiết kế agent và tool-use", en: "Design agents and tool-use" },
-        { vi: "Đánh giá chất lượng LLM & triển khai app", en: "Evaluate LLM quality & deploy the app" }
+      "id": "ds",
+      "cat": "ds",
+      "tagClass": "eng",
+      "tagLabel": {
+        "vi": "AI & Data Scientist",
+        "en": "AI & Data Scientist"
+      },
+      "title": {
+        "vi": "AI & Data Scientist",
+        "en": "AI & Data Scientist"
+      },
+      "tagline": {
+        "vi": "Từ toán, thống kê đến Machine Learning, Deep Learning và đưa mô hình vào quyết định.",
+        "en": "From math and statistics to Machine Learning, Deep Learning and turning models into decisions."
+      },
+      "price": "9.900.000đ",
+      "old": "24.900.000đ",
+      "studentPrice": "7.400.000đ",
+      "weeks": 12,
+      "projects": 5,
+      "level": {
+        "vi": "Cơ bản → Nâng cao",
+        "en": "Beginner → Advanced"
+      },
+      "format": {
+        "vi": "Online",
+        "en": "Online"
+      },
+      "outcomes": [
+        {
+          "vi": "Nắm toán & thống kê cho khoa học dữ liệu",
+          "en": "Master math & statistics for data science"
+        },
+        {
+          "vi": "Xây mô hình ML từ hồi quy đến ensemble",
+          "en": "Build ML models from regression to ensembles"
+        },
+        {
+          "vi": "Deep learning: CNN, RNN, Transformer",
+          "en": "Deep learning: CNN, RNN, Transformer"
+        },
+        {
+          "vi": "Thí nghiệm & suy luận nhân quả",
+          "en": "Experiment design & causal inference"
+        },
+        {
+          "vi": "Đưa mô hình & insight vào quyết định",
+          "en": "Turn models & insights into decisions"
+        }
       ],
-      curriculum: [
-        { vi: "Nền tảng LLM & prompt engineering", en: "LLM foundations & prompt engineering" },
-        { vi: "Embeddings & vector search", en: "Embeddings & vector search" },
-        { vi: "RAG end-to-end", en: "End-to-end RAG" },
-        { vi: "Agents & tool-use", en: "Agents & tool-use" },
-        { vi: "Fine-tuning & đánh giá (LLM-as-judge)", en: "Fine-tuning & evaluation (LLM-as-judge)" },
-        { vi: "Đồ án: chatbot doanh nghiệp có trích dẫn", en: "Project: an enterprise chatbot with citations" }
+      "curriculum": [
+        {
+          "vi": "Toán, thống kê & xác suất",
+          "en": "Math, statistics & probability"
+        },
+        {
+          "vi": "Python, EDA & trực quan hóa",
+          "en": "Python, EDA & visualization"
+        },
+        {
+          "vi": "Machine Learning (sup/unsup, ensemble)",
+          "en": "Machine Learning (sup/unsup, ensembles)"
+        },
+        {
+          "vi": "Deep Learning (CNN, RNN, Transformer)",
+          "en": "Deep Learning (CNN, RNN, Transformer)"
+        },
+        {
+          "vi": "Thí nghiệm, A/B testing & nhân quả",
+          "en": "Experiments, A/B testing & causal inference"
+        },
+        {
+          "vi": "Đồ án: mô hình dự báo end-to-end",
+          "en": "Project: end-to-end predictive model"
+        }
       ],
-      tools: ["Python", "PyTorch", "Hugging Face", "LangChain", "FAISS / Qdrant", "Ollama", "FastAPI"],
-      audience: [
-        { vi: "Dev / ML Engineer muốn làm AI Engineer", en: "Devs / ML engineers moving into AI Engineering" },
-        { vi: "Đã biết Python & ML cơ bản", en: "Already know Python & basic ML" },
-        { vi: "Muốn xây sản phẩm trên nền LLM", en: "Want to build LLM-powered products" }
+      "tools": [
+        "Python",
+        "pandas",
+        "scikit-learn",
+        "PyTorch",
+        "statsmodels",
+        "Matplotlib",
+        "SQL"
+      ],
+      "audience": [
+        {
+          "vi": "Muốn trở thành Data Scientist",
+          "en": "Aspiring Data Scientists"
+        },
+        {
+          "vi": "Analyst muốn lên Data Scientist",
+          "en": "Analysts leveling up to Data Scientist"
+        },
+        {
+          "vi": "Có nền Python, muốn học ML/DL bài bản",
+          "en": "Python users wanting rigorous ML/DL"
+        }
       ]
     },
     {
-      id: "ds", cat: "ds", tagClass: "eng", tagLabel: { vi: "Data Science", en: "Data Science" },
-      title: { vi: "Data Science nền tảng", en: "Data Science Foundations" },
-      tagline: { vi: "Thống kê, phân tích, trực quan hóa và storytelling cho quyết định kinh doanh.", en: "Statistics, analysis, visualization and storytelling for business decisions." },
-      price: "5.900.000đ", old: "14.900.000đ", studentPrice: "4.400.000đ", weeks: 8, projects: 3,
-      level: { vi: "Cơ bản", en: "Beginner" }, format: { vi: "Online", en: "Online" },
-      outcomes: [
-        { vi: "Phân tích dữ liệu với Python & SQL", en: "Analyze data with Python & SQL" },
-        { vi: "Kiểm định giả thuyết & A/B testing", en: "Hypothesis testing & A/B testing" },
-        { vi: "Trực quan hóa & xây dashboard", en: "Visualization & building dashboards" },
-        { vi: "Storytelling dữ liệu cho quyết định", en: "Data storytelling for decisions" }
+      "id": "ml",
+      "cat": "ml",
+      "tagClass": "ml",
+      "tagLabel": {
+        "vi": "Machine Learning",
+        "en": "Machine Learning"
+      },
+      "title": {
+        "vi": "Machine Learning thực chiến",
+        "en": "Practical Machine Learning"
+      },
+      "tagline": {
+        "vi": "Từ hồi quy đến ensemble, feature engineering và đưa mô hình lên production.",
+        "en": "From regression to ensembles, feature engineering and shipping models to production."
+      },
+      "price": "7.900.000đ",
+      "old": "19.900.000đ",
+      "studentPrice": "5.900.000đ",
+      "weeks": 10,
+      "projects": 4,
+      "level": {
+        "vi": "Trung cấp",
+        "en": "Intermediate"
+      },
+      "format": {
+        "vi": "Online",
+        "en": "Online"
+      },
+      "outcomes": [
+        {
+          "vi": "Nắm quy trình ML end-to-end",
+          "en": "Master the end-to-end ML workflow"
+        },
+        {
+          "vi": "Feature engineering & xây pipeline",
+          "en": "Feature engineering & building pipelines"
+        },
+        {
+          "vi": "Đánh giá, tuning và tránh overfitting/leakage",
+          "en": "Evaluate, tune and avoid overfitting/leakage"
+        },
+        {
+          "vi": "Đưa mô hình thành API phục vụ thực tế",
+          "en": "Serve models as a real-world API"
+        }
       ],
-      curriculum: [
-        { vi: "Python & pandas cho phân tích", en: "Python & pandas for analysis" },
-        { vi: "Thống kê & xác suất ứng dụng", en: "Applied statistics & probability" },
-        { vi: "Trực quan hóa dữ liệu", en: "Data visualization" },
-        { vi: "A/B testing & kiểm định giả thuyết", en: "A/B testing & hypothesis testing" },
-        { vi: "SQL phân tích & dashboard", en: "Analytical SQL & dashboards" },
-        { vi: "Đồ án: phân tích sản phẩm end-to-end", en: "Project: end-to-end product analysis" }
+      "curriculum": [
+        {
+          "vi": "Toán & Python cho Machine Learning",
+          "en": "Math & Python for Machine Learning"
+        },
+        {
+          "vi": "Hồi quy & phân loại",
+          "en": "Regression & classification"
+        },
+        {
+          "vi": "Feature engineering & pipeline",
+          "en": "Feature engineering & pipelines"
+        },
+        {
+          "vi": "Ensemble: Random Forest, XGBoost",
+          "en": "Ensembles: Random Forest, XGBoost"
+        },
+        {
+          "vi": "Đánh giá, tuning & cross-validation",
+          "en": "Evaluation, tuning & cross-validation"
+        },
+        {
+          "vi": "Đồ án: dự đoán churn + deploy API",
+          "en": "Project: churn prediction + API deploy"
+        }
       ],
-      tools: ["Python", "pandas", "NumPy", "SQL", "Matplotlib", "Seaborn", "Power BI"],
-      audience: [
-        { vi: "Người mới bắt đầu với dữ liệu", en: "Complete beginners with data" },
-        { vi: "Muốn làm Data Analyst / Data Scientist", en: "Aiming for Data Analyst / Data Scientist" },
-        { vi: "Dân kinh doanh muốn ra quyết định bằng dữ liệu", en: "Business folks who want data-driven decisions" }
+      "tools": [
+        "Python",
+        "NumPy",
+        "pandas",
+        "scikit-learn",
+        "XGBoost",
+        "Matplotlib",
+        "FastAPI"
+      ],
+      "audience": [
+        {
+          "vi": "Biết Python cơ bản, muốn vào ML",
+          "en": "Know basic Python, want to break into ML"
+        },
+        {
+          "vi": "Data Analyst muốn lên Data Scientist / ML",
+          "en": "Analysts leveling up to Data Scientist / ML"
+        },
+        {
+          "vi": "Kỹ sư phần mềm muốn thêm kỹ năng ML",
+          "en": "Software engineers adding ML skills"
+        }
       ]
     },
     {
-      id: "mlops", cat: "ml", tagClass: "ml", tagLabel: { vi: "Machine Learning", en: "Machine Learning" },
-      title: { vi: "MLOps & Deployment", en: "MLOps & Deployment" },
-      tagline: { vi: "CI/CD cho ML, giám sát drift và triển khai mô hình lên đa cloud.", en: "CI/CD for ML, drift monitoring and multi-cloud model deployment." },
-      price: "8.900.000đ", old: "21.900.000đ", studentPrice: "6.700.000đ", weeks: 8, projects: 4,
-      level: { vi: "Nâng cao", en: "Advanced" }, format: { vi: "Online", en: "Online" },
-      outcomes: [
-        { vi: "Đóng gói & versioning mô hình", en: "Package & version models" },
-        { vi: "CI/CD cho pipeline ML", en: "CI/CD for ML pipelines" },
-        { vi: "Giám sát drift & hiệu năng", en: "Monitor drift & performance" },
-        { vi: "Triển khai container / Kubernetes", en: "Deploy on containers / Kubernetes" }
+      "id": "ai",
+      "cat": "ai",
+      "tagClass": "ai",
+      "tagLabel": {
+        "vi": "AI Engineer",
+        "en": "AI Engineer"
+      },
+      "title": {
+        "vi": "AI Engineer: LLM & RAG",
+        "en": "AI Engineer: LLM & RAG"
+      },
+      "tagline": {
+        "vi": "Xây ứng dụng LLM thực chiến — RAG, agent, fine-tuning, đánh giá và MLOps cho AI.",
+        "en": "Build real LLM apps — RAG, agents, fine-tuning, evaluation and MLOps for AI."
+      },
+      "price": "8.900.000đ",
+      "old": "22.900.000đ",
+      "studentPrice": "6.700.000đ",
+      "weeks": 10,
+      "projects": 4,
+      "level": {
+        "vi": "Nâng cao",
+        "en": "Advanced"
+      },
+      "format": {
+        "vi": "Online",
+        "en": "Online"
+      },
+      "outcomes": [
+        {
+          "vi": "Xây RAG pipeline end-to-end",
+          "en": "Build an end-to-end RAG pipeline"
+        },
+        {
+          "vi": "Dùng embeddings & vector database",
+          "en": "Use embeddings & vector databases"
+        },
+        {
+          "vi": "Thiết kế agent và tool-use",
+          "en": "Design agents and tool-use"
+        },
+        {
+          "vi": "Đánh giá chất lượng LLM & triển khai app",
+          "en": "Evaluate LLM quality & deploy the app"
+        }
       ],
-      curriculum: [
-        { vi: "Nền tảng MLOps & Git workflow", en: "MLOps foundations & Git workflow" },
-        { vi: "Đóng gói model & MLflow tracking", en: "Model packaging & MLflow tracking" },
-        { vi: "CI/CD với GitHub Actions", en: "CI/CD with GitHub Actions" },
-        { vi: "Docker & Kubernetes cho ML", en: "Docker & Kubernetes for ML" },
-        { vi: "Giám sát drift & observability", en: "Drift monitoring & observability" },
-        { vi: "Đồ án: pipeline ML tự động end-to-end", en: "Project: automated end-to-end ML pipeline" }
+      "curriculum": [
+        {
+          "vi": "Nền tảng LLM & prompt engineering",
+          "en": "LLM foundations & prompt engineering"
+        },
+        {
+          "vi": "Embeddings & vector search",
+          "en": "Embeddings & vector search"
+        },
+        {
+          "vi": "RAG end-to-end",
+          "en": "End-to-end RAG"
+        },
+        {
+          "vi": "Agents & tool-use",
+          "en": "Agents & tool-use"
+        },
+        {
+          "vi": "Fine-tuning & đánh giá (LLM-as-judge)",
+          "en": "Fine-tuning & evaluation (LLM-as-judge)"
+        },
+        {
+          "vi": "Đồ án: chatbot doanh nghiệp có trích dẫn",
+          "en": "Project: an enterprise chatbot with citations"
+        }
       ],
-      tools: ["Python", "MLflow", "Docker", "Kubernetes", "GitHub Actions", "Prometheus", "Grafana"],
-      audience: [
-        { vi: "ML / Data Scientist muốn đưa model ra production", en: "ML / Data Scientists shipping models to production" },
-        { vi: "DevOps muốn chuyển sang MLOps", en: "DevOps engineers moving into MLOps" },
-        { vi: "Data Engineer muốn mở rộng sang ML", en: "Data Engineers expanding into ML" }
+      "tools": [
+        "Python",
+        "PyTorch",
+        "Hugging Face",
+        "LangChain",
+        "FAISS / Qdrant",
+        "Ollama",
+        "FastAPI"
+      ],
+      "audience": [
+        {
+          "vi": "Dev / ML Engineer muốn làm AI Engineer",
+          "en": "Devs / ML engineers moving into AI Engineering"
+        },
+        {
+          "vi": "Đã biết Python & ML cơ bản",
+          "en": "Already know Python & basic ML"
+        },
+        {
+          "vi": "Muốn xây sản phẩm trên nền LLM",
+          "en": "Want to build LLM-powered products"
+        }
       ]
     },
     {
-      id: "dl", cat: "ai", tagClass: "ai", tagLabel: { vi: "AI / LLM", en: "AI / LLM" },
-      title: { vi: "Deep Learning với PyTorch", en: "Deep Learning with PyTorch" },
-      tagline: { vi: "Mạng nơ-ron, CNN, RNN, Transformer và huấn luyện mô hình trên GPU.", en: "Neural networks, CNNs, RNNs, Transformers and training on GPUs." },
-      price: "8.900.000đ", old: "22.900.000đ", studentPrice: "6.700.000đ", weeks: 10, projects: 4,
-      level: { vi: "Nâng cao", en: "Advanced" }, format: { vi: "Online", en: "Online" },
-      outcomes: [
-        { vi: "Hiểu & xây dựng mạng nơ-ron", en: "Understand & build neural networks" },
-        { vi: "CNN cho thị giác máy tính", en: "CNNs for computer vision" },
-        { vi: "RNN & Transformer cho dữ liệu chuỗi", en: "RNNs & Transformers for sequence data" },
-        { vi: "Huấn luyện trên GPU & transfer learning", en: "GPU training & transfer learning" }
+      "id": "mlops",
+      "cat": "ml",
+      "tagClass": "ml",
+      "tagLabel": {
+        "vi": "MLOps",
+        "en": "MLOps"
+      },
+      "title": {
+        "vi": "MLOps & Deployment",
+        "en": "MLOps & Deployment"
+      },
+      "tagline": {
+        "vi": "CI/CD cho ML, giám sát drift và triển khai mô hình lên đa cloud.",
+        "en": "CI/CD for ML, drift monitoring and multi-cloud model deployment."
+      },
+      "price": "8.900.000đ",
+      "old": "21.900.000đ",
+      "studentPrice": "6.700.000đ",
+      "weeks": 8,
+      "projects": 4,
+      "level": {
+        "vi": "Nâng cao",
+        "en": "Advanced"
+      },
+      "format": {
+        "vi": "Online",
+        "en": "Online"
+      },
+      "outcomes": [
+        {
+          "vi": "Đóng gói & versioning mô hình",
+          "en": "Package & version models"
+        },
+        {
+          "vi": "CI/CD cho pipeline ML",
+          "en": "CI/CD for ML pipelines"
+        },
+        {
+          "vi": "Giám sát drift & hiệu năng",
+          "en": "Monitor drift & performance"
+        },
+        {
+          "vi": "Triển khai container / Kubernetes",
+          "en": "Deploy on containers / Kubernetes"
+        }
       ],
-      curriculum: [
-        { vi: "Nền tảng deep learning & PyTorch", en: "Deep learning foundations & PyTorch" },
-        { vi: "Mạng nơ-ron & lan truyền ngược", en: "Neural networks & backpropagation" },
-        { vi: "CNN & thị giác máy tính", en: "CNNs & computer vision" },
-        { vi: "RNN & dữ liệu chuỗi thời gian", en: "RNNs & time-series data" },
-        { vi: "Transformer & cơ chế attention", en: "Transformers & attention" },
-        { vi: "Đồ án: phân loại ảnh hoặc NLP", en: "Project: image classification or NLP" }
+      "curriculum": [
+        {
+          "vi": "Nền tảng MLOps & Git workflow",
+          "en": "MLOps foundations & Git workflow"
+        },
+        {
+          "vi": "Đóng gói model & MLflow tracking",
+          "en": "Model packaging & MLflow tracking"
+        },
+        {
+          "vi": "CI/CD với GitHub Actions",
+          "en": "CI/CD with GitHub Actions"
+        },
+        {
+          "vi": "Docker & Kubernetes cho ML",
+          "en": "Docker & Kubernetes for ML"
+        },
+        {
+          "vi": "Giám sát drift & observability",
+          "en": "Drift monitoring & observability"
+        },
+        {
+          "vi": "Đồ án: pipeline ML tự động end-to-end",
+          "en": "Project: automated end-to-end ML pipeline"
+        }
       ],
-      tools: ["Python", "PyTorch", "torchvision", "Hugging Face", "CUDA", "NumPy"],
-      audience: [
-        { vi: "Đã biết ML cơ bản, muốn học sâu", en: "Know basic ML, want to go deep" },
-        { vi: "Muốn làm về Computer Vision / NLP", en: "Aiming for Computer Vision / NLP" },
-        { vi: "Nghiên cứu sinh / kỹ sư AI", en: "Researchers / AI engineers" }
+      "tools": [
+        "Python",
+        "MLflow",
+        "Docker",
+        "Kubernetes",
+        "GitHub Actions",
+        "Prometheus",
+        "Grafana"
+      ],
+      "audience": [
+        {
+          "vi": "ML / Data Scientist muốn đưa model ra production",
+          "en": "ML / Data Scientists shipping models to production"
+        },
+        {
+          "vi": "DevOps muốn chuyển sang MLOps",
+          "en": "DevOps engineers moving into MLOps"
+        },
+        {
+          "vi": "Data Engineer muốn mở rộng sang ML",
+          "en": "Data Engineers expanding into ML"
+        }
+      ]
+    },
+    {
+      "id": "pyda",
+      "cat": "ds",
+      "tagClass": "eng",
+      "tagLabel": {
+        "vi": "Python for Data",
+        "en": "Python for Data"
+      },
+      "title": {
+        "vi": "Python for Data Analysis",
+        "en": "Python for Data Analysis"
+      },
+      "tagline": {
+        "vi": "Học Python, pandas và NumPy để phân tích dữ liệu thực tế — từ số 0.",
+        "en": "Learn Python, pandas and NumPy to analyze real data — from scratch."
+      },
+      "price": "4.900.000đ",
+      "old": "9.900.000đ",
+      "studentPrice": "3.700.000đ",
+      "weeks": 6,
+      "projects": 3,
+      "level": {
+        "vi": "Cơ bản",
+        "en": "Beginner"
+      },
+      "format": {
+        "vi": "Online",
+        "en": "Online"
+      },
+      "outcomes": [
+        {
+          "vi": "Thành thạo Python cho xử lý dữ liệu",
+          "en": "Master Python for data work"
+        },
+        {
+          "vi": "Làm chủ pandas & NumPy",
+          "en": "Master pandas & NumPy"
+        },
+        {
+          "vi": "Làm sạch, biến đổi & tổng hợp dữ liệu",
+          "en": "Clean, transform & aggregate data"
+        },
+        {
+          "vi": "Trực quan hóa & rút insight",
+          "en": "Visualize & extract insights"
+        }
+      ],
+      "curriculum": [
+        {
+          "vi": "Python cơ bản & Jupyter",
+          "en": "Python basics & Jupyter"
+        },
+        {
+          "vi": "NumPy & tính toán số",
+          "en": "NumPy & numerical computing"
+        },
+        {
+          "vi": "pandas: lọc, nhóm, join",
+          "en": "pandas: filter, group, join"
+        },
+        {
+          "vi": "Làm sạch & biến đổi dữ liệu",
+          "en": "Data cleaning & transformation"
+        },
+        {
+          "vi": "Trực quan hóa với Matplotlib/Seaborn",
+          "en": "Visualization with Matplotlib/Seaborn"
+        },
+        {
+          "vi": "Đồ án: phân tích một bộ dữ liệu thực",
+          "en": "Project: analyze a real dataset"
+        }
+      ],
+      "tools": [
+        "Python",
+        "pandas",
+        "NumPy",
+        "Matplotlib",
+        "Seaborn",
+        "Jupyter"
+      ],
+      "audience": [
+        {
+          "vi": "Người mới hoàn toàn với lập trình/dữ liệu",
+          "en": "Complete beginners to coding/data"
+        },
+        {
+          "vi": "Sinh viên muốn kỹ năng phân tích",
+          "en": "Students wanting analysis skills"
+        },
+        {
+          "vi": "Dân văn phòng muốn làm việc với dữ liệu",
+          "en": "Office workers wanting to work with data"
+        }
       ]
     }
   ],
@@ -720,7 +1251,7 @@ const DATA = {
         topics: [ { vi: "Triển khai app (FastAPI + UI)", en: "Deploy the app (FastAPI + UI)" }, { vi: "Portfolio & GitHub", en: "Portfolio & GitHub" }, { vi: "Luyện phỏng vấn AI Engineer", en: "AI Engineer interview prep" } ],
         project: { vi: "Đồ án 4 (capstone): trợ lý AI doanh nghiệp (RAG + agent) deploy hoàn chỉnh", en: "Project 4 (capstone): enterprise AI assistant (RAG + agent), fully deployed" } }
     ],
-    ds: [
+    da: [
       { week: "1", title: { vi: "Nền tảng & tư duy dữ liệu", en: "Foundations & data thinking" },
         topics: [ { vi: "Vòng đời phân tích dữ liệu", en: "The data analysis lifecycle" }, { vi: "Loại phân tích: mô tả → chẩn đoán → dự đoán", en: "Types of analytics: descriptive → diagnostic → predictive" }, { vi: "Excel/Sheets nền tảng & đặt câu hỏi đúng", en: "Excel/Sheets basics & asking the right questions" } ] },
       { week: "2", title: { vi: "Python & pandas cho phân tích", en: "Python & pandas for analysis" },
@@ -763,25 +1294,373 @@ const DATA = {
         topics: [ { vi: "Tài liệu vận hành & runbook", en: "Operational docs & runbooks" }, { vi: "Portfolio & GitHub", en: "Portfolio & GitHub" }, { vi: "Luyện phỏng vấn MLOps", en: "MLOps interview prep" } ],
         project: { vi: "Đồ án 4 (capstone): pipeline ML tự động end-to-end có giám sát", en: "Project 4 (capstone): automated end-to-end ML pipeline with monitoring" } }
     ],
-    dl: [
-      { week: "1", title: { vi: "Nền tảng Deep Learning & PyTorch", en: "Deep learning foundations & PyTorch" },
-        topics: [ { vi: "Tensor & autograd, PyTorch cơ bản", en: "Tensors & autograd, PyTorch basics" }, { vi: "Ôn đại số tuyến tính & giải tích", en: "Linear algebra & calculus refresher" }, { vi: "GPU & CUDA", en: "GPU & CUDA" } ] },
-      { week: "2–3", title: { vi: "Mạng nơ-ron & huấn luyện", en: "Neural networks & training" },
-        topics: [ { vi: "Perceptron, MLP & lan truyền ngược", en: "Perceptron, MLP & backpropagation" }, { vi: "Hàm kích hoạt, loss & optimizer", en: "Activations, loss & optimizers" }, { vi: "Regularization: dropout, batch norm", en: "Regularization: dropout, batch norm" } ],
-        project: { vi: "Đồ án 1: Xây & huấn luyện mạng nơ-ron từ đầu", en: "Project 1: Build & train a neural network from scratch" } },
-      { week: "4–5", title: { vi: "CNN & thị giác máy tính", en: "CNNs & computer vision" },
-        topics: [ { vi: "Convolution, pooling, kiến trúc CNN (ResNet)", en: "Convolution, pooling, CNN architectures (ResNet)" }, { vi: "Data augmentation", en: "Data augmentation" }, { vi: "Transfer learning", en: "Transfer learning" } ],
-        project: { vi: "Đồ án 2: Phân loại ảnh với CNN + transfer learning", en: "Project 2: Image classification with CNN + transfer learning" } },
-      { week: "6", title: { vi: "RNN & dữ liệu chuỗi", en: "RNNs & sequence data" },
-        topics: [ { vi: "RNN, LSTM/GRU", en: "RNN, LSTM/GRU" }, { vi: "Chuỗi thời gian", en: "Time series" }, { vi: "Xử lý văn bản & embeddings", en: "Text processing & embeddings" } ] },
-      { week: "7–8", title: { vi: "Transformer & Attention", en: "Transformers & attention" },
-        topics: [ { vi: "Cơ chế attention & self-attention", en: "Attention & self-attention" }, { vi: "Kiến trúc Transformer", en: "Transformer architecture" }, { vi: "Mô hình pretrained (BERT) & Hugging Face", en: "Pretrained models (BERT) & Hugging Face" }, { vi: "Mô hình sinh: GANs, diffusion, LLM", en: "Generative models: GANs, diffusion, LLMs" } ],
-        project: { vi: "Đồ án 3: Fine-tune Transformer cho NLP (phân loại văn bản)", en: "Project 3: Fine-tune a Transformer for NLP (text classification)" } },
-      { week: "9", title: { vi: "Huấn luyện hiệu quả & triển khai", en: "Efficient training & deployment" },
-        topics: [ { vi: "Mixed precision & checkpointing", en: "Mixed precision & checkpointing" }, { vi: "Tối ưu GPU", en: "GPU optimization" }, { vi: "Đóng gói & phục vụ mô hình, ONNX", en: "Packaging & serving models, ONNX" } ] },
-      { week: "10", title: { vi: "Đồ án & sẵn sàng đi làm", en: "Capstone & job-ready" },
-        topics: [ { vi: "Đọc & tái hiện paper", en: "Reading & reproducing papers" }, { vi: "Portfolio & GitHub", en: "Portfolio & GitHub" }, { vi: "Luyện phỏng vấn Deep Learning", en: "Deep Learning interview prep" } ],
-        project: { vi: "Đồ án 4 (capstone): dự án Computer Vision hoặc NLP hoàn chỉnh", en: "Project 4 (capstone): a complete Computer Vision or NLP project" } }
+    ds: [
+      {
+        "week": "1",
+        "title": {
+          "vi": "Toán & thống kê nền tảng",
+          "en": "Math & statistics foundations"
+        },
+        "topics": [
+          {
+            "vi": "Đại số tuyến tính & giải tích",
+            "en": "Linear algebra & calculus"
+          },
+          {
+            "vi": "Xác suất & thống kê mô tả",
+            "en": "Probability & descriptive statistics"
+          },
+          {
+            "vi": "Kiểm định giả thuyết",
+            "en": "Hypothesis testing"
+          }
+        ]
+      },
+      {
+        "week": "2",
+        "title": {
+          "vi": "Python & phân tích khám phá (EDA)",
+          "en": "Python & exploratory data analysis"
+        },
+        "topics": [
+          {
+            "vi": "Python, NumPy & pandas",
+            "en": "Python, NumPy & pandas"
+          },
+          {
+            "vi": "EDA & làm sạch dữ liệu",
+            "en": "EDA & data cleaning"
+          },
+          {
+            "vi": "Trực quan hóa (Matplotlib/Seaborn)",
+            "en": "Visualization (Matplotlib/Seaborn)"
+          }
+        ],
+        "project": {
+          "vi": "Đồ án 1: EDA & rút insight từ dữ liệu thực",
+          "en": "Project 1: EDA & insights from real data"
+        }
+      },
+      {
+        "week": "3",
+        "title": {
+          "vi": "SQL & feature engineering",
+          "en": "SQL & feature engineering"
+        },
+        "topics": [
+          {
+            "vi": "SQL phân tích",
+            "en": "Analytical SQL"
+          },
+          {
+            "vi": "Feature engineering",
+            "en": "Feature engineering"
+          },
+          {
+            "vi": "Chuẩn hóa & xử lý dữ liệu",
+            "en": "Scaling & data preprocessing"
+          }
+        ]
+      },
+      {
+        "week": "4–5",
+        "title": {
+          "vi": "Machine Learning có giám sát",
+          "en": "Supervised Machine Learning"
+        },
+        "topics": [
+          {
+            "vi": "Hồi quy & phân loại",
+            "en": "Regression & classification"
+          },
+          {
+            "vi": "Cây quyết định & ensemble (RF, XGBoost)",
+            "en": "Trees & ensembles (RF, XGBoost)"
+          },
+          {
+            "vi": "Đánh giá mô hình & cross-validation",
+            "en": "Model evaluation & cross-validation"
+          }
+        ],
+        "project": {
+          "vi": "Đồ án 2: mô hình dự báo (kiểu Kaggle)",
+          "en": "Project 2: predictive model (Kaggle-style)"
+        }
+      },
+      {
+        "week": "6",
+        "title": {
+          "vi": "Học không giám sát",
+          "en": "Unsupervised learning"
+        },
+        "topics": [
+          {
+            "vi": "Clustering (K-Means)",
+            "en": "Clustering (K-Means)"
+          },
+          {
+            "vi": "PCA & giảm chiều",
+            "en": "PCA & dimensionality reduction"
+          },
+          {
+            "vi": "Recommender & phát hiện bất thường",
+            "en": "Recommenders & anomaly detection"
+          }
+        ]
+      },
+      {
+        "week": "7–8",
+        "title": {
+          "vi": "Deep Learning",
+          "en": "Deep Learning"
+        },
+        "topics": [
+          {
+            "vi": "Mạng nơ-ron & PyTorch",
+            "en": "Neural networks & PyTorch"
+          },
+          {
+            "vi": "CNN cho thị giác máy tính",
+            "en": "CNNs for computer vision"
+          },
+          {
+            "vi": "RNN/Transformer cho chuỗi & NLP",
+            "en": "RNN/Transformer for sequences & NLP"
+          }
+        ],
+        "project": {
+          "vi": "Đồ án 3: dự án Computer Vision hoặc NLP",
+          "en": "Project 3: a Computer Vision or NLP project"
+        }
+      },
+      {
+        "week": "9",
+        "title": {
+          "vi": "Thí nghiệm & suy luận nhân quả",
+          "en": "Experiments & causal inference"
+        },
+        "topics": [
+          {
+            "vi": "A/B testing & thiết kế thí nghiệm",
+            "en": "A/B testing & experiment design"
+          },
+          {
+            "vi": "Suy luận nhân quả cơ bản",
+            "en": "Causal inference basics"
+          },
+          {
+            "vi": "Diễn giải kết quả cho quyết định",
+            "en": "Interpreting results for decisions"
+          }
+        ]
+      },
+      {
+        "week": "10",
+        "title": {
+          "vi": "NLP & LLM ứng dụng",
+          "en": "Applied NLP & LLMs"
+        },
+        "topics": [
+          {
+            "vi": "Embeddings & semantic search",
+            "en": "Embeddings & semantic search"
+          },
+          {
+            "vi": "Fine-tuning cơ bản",
+            "en": "Fine-tuning basics"
+          },
+          {
+            "vi": "Dùng LLM cho phân tích dữ liệu",
+            "en": "Using LLMs for data analysis"
+          }
+        ]
+      },
+      {
+        "week": "11",
+        "title": {
+          "vi": "Đưa mô hình vào quyết định",
+          "en": "From model to decision"
+        },
+        "topics": [
+          {
+            "vi": "Đóng gói & serving (FastAPI)",
+            "en": "Packaging & serving (FastAPI)"
+          },
+          {
+            "vi": "MLOps cơ bản & giám sát",
+            "en": "MLOps basics & monitoring"
+          },
+          {
+            "vi": "Storytelling & trình bày insight",
+            "en": "Storytelling & presenting insights"
+          }
+        ]
+      },
+      {
+        "week": "12",
+        "title": {
+          "vi": "Đồ án & sẵn sàng đi làm",
+          "en": "Capstone & job-ready"
+        },
+        "topics": [
+          {
+            "vi": "Portfolio & GitHub",
+            "en": "Portfolio & GitHub"
+          },
+          {
+            "vi": "Luyện phỏng vấn Data Scientist",
+            "en": "Data Scientist interview prep"
+          },
+          {
+            "vi": "Đọc & tái hiện paper",
+            "en": "Reading & reproducing papers"
+          }
+        ],
+        "project": {
+          "vi": "Đồ án 4 (capstone): dự án Data Science end-to-end",
+          "en": "Project 4 (capstone): an end-to-end Data Science project"
+        }
+      }
+    ],
+    pyda: [
+      {
+        "week": "1",
+        "title": {
+          "vi": "Python cơ bản",
+          "en": "Python basics"
+        },
+        "topics": [
+          {
+            "vi": "Cú pháp, biến & kiểu dữ liệu",
+            "en": "Syntax, variables & data types"
+          },
+          {
+            "vi": "Vòng lặp, điều kiện & hàm",
+            "en": "Loops, conditionals & functions"
+          },
+          {
+            "vi": "Jupyter Notebook",
+            "en": "Jupyter Notebook"
+          }
+        ]
+      },
+      {
+        "week": "2",
+        "title": {
+          "vi": "NumPy & tính toán số",
+          "en": "NumPy & numerical computing"
+        },
+        "topics": [
+          {
+            "vi": "Mảng & vector hóa",
+            "en": "Arrays & vectorization"
+          },
+          {
+            "vi": "Broadcasting & phép toán ma trận",
+            "en": "Broadcasting & matrix ops"
+          },
+          {
+            "vi": "Sinh & lấy mẫu dữ liệu",
+            "en": "Generating & sampling data"
+          }
+        ]
+      },
+      {
+        "week": "3",
+        "title": {
+          "vi": "pandas nền tảng",
+          "en": "pandas fundamentals"
+        },
+        "topics": [
+          {
+            "vi": "Series & DataFrame",
+            "en": "Series & DataFrame"
+          },
+          {
+            "vi": "Lọc, chọn & sắp xếp",
+            "en": "Filter, select & sort"
+          },
+          {
+            "vi": "Đọc CSV/Excel/JSON",
+            "en": "Read CSV/Excel/JSON"
+          }
+        ],
+        "project": {
+          "vi": "Đồ án 1: khám phá một bộ dữ liệu",
+          "en": "Project 1: explore a dataset"
+        }
+      },
+      {
+        "week": "4",
+        "title": {
+          "vi": "pandas nâng cao",
+          "en": "Advanced pandas"
+        },
+        "topics": [
+          {
+            "vi": "GroupBy & tổng hợp",
+            "en": "GroupBy & aggregation"
+          },
+          {
+            "vi": "Join / merge",
+            "en": "Join / merge"
+          },
+          {
+            "vi": "Pivot table & reshape",
+            "en": "Pivot tables & reshaping"
+          }
+        ],
+        "project": {
+          "vi": "Đồ án 2: tổng hợp & báo cáo",
+          "en": "Project 2: aggregate & report"
+        }
+      },
+      {
+        "week": "5",
+        "title": {
+          "vi": "Làm sạch & trực quan hóa",
+          "en": "Cleaning & visualization"
+        },
+        "topics": [
+          {
+            "vi": "Xử lý missing/duplicate/outlier",
+            "en": "Handle missing/duplicates/outliers"
+          },
+          {
+            "vi": "Matplotlib & Seaborn",
+            "en": "Matplotlib & Seaborn"
+          },
+          {
+            "vi": "Chọn biểu đồ đúng",
+            "en": "Choosing the right chart"
+          }
+        ]
+      },
+      {
+        "week": "6",
+        "title": {
+          "vi": "Đồ án & bước tiếp theo",
+          "en": "Capstone & next steps"
+        },
+        "topics": [
+          {
+            "vi": "Phân tích end-to-end",
+            "en": "End-to-end analysis"
+          },
+          {
+            "vi": "Portfolio & GitHub",
+            "en": "Portfolio & GitHub"
+          },
+          {
+            "vi": "Lộ trình lên Data Analyst",
+            "en": "Path to Data Analyst"
+          }
+        ],
+        "project": {
+          "vi": "Đồ án 3 (capstone): phân tích một bộ dữ liệu thực",
+          "en": "Project 3 (capstone): analyze a real dataset"
+        }
+      }
     ]
   },
 
@@ -796,9 +1675,9 @@ const DATA = {
     {
       id: "da", cat: "eng", role: "Data Analyst", salary: "12 – 25 triệu/tháng",
       stages: [
-        { label: { vi: "Chưa biết gì", en: "Zero" }, skills: ["Excel", "Tư duy dữ liệu", "SQL cơ bản"], course: { vi: "Data Science nền tảng", en: "Data Science Foundations" }, weeks: 2 },
-        { label: { vi: "Nền tảng", en: "Foundation" }, skills: ["SQL nâng cao", "Python (pandas)", "Làm sạch dữ liệu"], course: { vi: "Data Science nền tảng", en: "Data Science Foundations" }, weeks: 3 },
-        { label: { vi: "Chuyên sâu", en: "Core skills" }, skills: ["Thống kê", "Trực quan hóa", "Power BI / Looker"], course: { vi: "Data Science nền tảng", en: "Data Science Foundations" }, weeks: 3 },
+        { label: { vi: "Chưa biết gì", en: "Zero" }, skills: ["Excel", "Tư duy dữ liệu", "SQL cơ bản"], course: { vi: "Data Analyst", en: "Data Analyst" }, weeks: 2 },
+        { label: { vi: "Nền tảng", en: "Foundation" }, skills: ["SQL nâng cao", "Python (pandas)", "Làm sạch dữ liệu"], course: { vi: "Data Analyst", en: "Data Analyst" }, weeks: 3 },
+        { label: { vi: "Chuyên sâu", en: "Core skills" }, skills: ["Thống kê", "Trực quan hóa", "Power BI / Looker"], course: { vi: "Data Analyst", en: "Data Analyst" }, weeks: 3 },
         { label: { vi: "Sẵn sàng đi làm", en: "Job-ready" }, skills: ["Dashboard portfolio", "SQL phỏng vấn", "Storytelling"], course: { vi: "Career: CV & phỏng vấn", en: "Career: CV & interview" }, weeks: 2 }
       ]
     },
@@ -823,8 +1702,8 @@ const DATA = {
     {
       id: "ds", cat: "ml", role: "AI & Data Scientist", salary: "18 – 50 triệu/tháng",
       stages: [
-        { label: { vi: "Chưa biết gì", en: "Zero" }, skills: ["Python", "Thống kê", "SQL"], course: { vi: "Data Science nền tảng", en: "Data Science Foundations" }, weeks: 3 },
-        { label: { vi: "Nền tảng", en: "Foundation" }, skills: ["EDA", "Trực quan hóa", "A/B testing"], course: { vi: "Data Science nền tảng", en: "Data Science Foundations" }, weeks: 3 },
+        { label: { vi: "Chưa biết gì", en: "Zero" }, skills: ["Python", "Thống kê", "SQL"], course: { vi: "AI & Data Scientist", en: "AI & Data Scientist" }, weeks: 3 },
+        { label: { vi: "Nền tảng", en: "Foundation" }, skills: ["EDA", "Trực quan hóa", "A/B testing"], course: { vi: "AI & Data Scientist", en: "AI & Data Scientist" }, weeks: 3 },
         { label: { vi: "Chuyên sâu", en: "Core skills" }, skills: ["Machine Learning", "Feature engineering", "Mô hình dự báo"], course: { vi: "Machine Learning thực chiến", en: "Practical Machine Learning" }, weeks: 4 },
         { label: { vi: "Sẵn sàng đi làm", en: "Job-ready" }, skills: ["Business case", "Model deploy", "Portfolio"], course: { vi: "MLOps & Deployment", en: "MLOps & Deployment" }, weeks: 3 }
       ]
@@ -850,9 +1729,9 @@ const DATA = {
     {
       id: "pyda", cat: "eng", role: "Python for Data Analysis", salary: "10 – 22 triệu/tháng",
       stages: [
-        { label: { vi: "Chưa biết gì", en: "Zero" }, skills: ["Python cơ bản", "Cấu trúc dữ liệu", "Jupyter"], course: { vi: "Data Science nền tảng", en: "Data Science Foundations" }, weeks: 2 },
-        { label: { vi: "Nền tảng", en: "Foundation" }, skills: ["pandas", "NumPy", "Làm sạch dữ liệu"], course: { vi: "Data Science nền tảng", en: "Data Science Foundations" }, weeks: 3 },
-        { label: { vi: "Chuyên sâu", en: "Core skills" }, skills: ["Trực quan hóa", "Thống kê ứng dụng", "SQL"], course: { vi: "Data Science nền tảng", en: "Data Science Foundations" }, weeks: 2 },
+        { label: { vi: "Chưa biết gì", en: "Zero" }, skills: ["Python cơ bản", "Cấu trúc dữ liệu", "Jupyter"], course: { vi: "Python for Data Analysis", en: "Python for Data Analysis" }, weeks: 2 },
+        { label: { vi: "Nền tảng", en: "Foundation" }, skills: ["pandas", "NumPy", "Làm sạch dữ liệu"], course: { vi: "Python for Data Analysis", en: "Python for Data Analysis" }, weeks: 3 },
+        { label: { vi: "Chuyên sâu", en: "Core skills" }, skills: ["Trực quan hóa", "Thống kê ứng dụng", "SQL"], course: { vi: "Python for Data Analysis", en: "Python for Data Analysis" }, weeks: 2 },
         { label: { vi: "Sẵn sàng đi làm", en: "Job-ready" }, skills: ["EDA end-to-end", "Dashboard", "Portfolio", "Storytelling"], course: { vi: "Career: CV & phỏng vấn", en: "Career: CV & interview" }, weeks: 2 }
       ]
     }
@@ -891,7 +1770,7 @@ const DATA = {
   combos: [
     { name: { vi: "Lộ trình Data Engineer", en: "Data Engineer path" }, includes: { vi: "DE Zero → Hero + MLOps + Career", en: "DE Zero → Hero + MLOps + Career" }, price: "18.900.000đ", old: "42.900.000đ" },
     { name: { vi: "Lộ trình AI / ML Engineer", en: "AI / ML Engineer path" }, includes: { vi: "ML thực chiến + Deep Learning + AI LLM & RAG", en: "Practical ML + Deep Learning + AI LLM & RAG" }, price: "21.900.000đ", old: "54.700.000đ" },
-    { name: { vi: "Lộ trình Data Analyst", en: "Data Analyst path" }, includes: { vi: "Data Science nền tảng + SQL/BI + Career", en: "Data Science Foundations + SQL/BI + Career" }, price: "12.900.000đ", old: "29.900.000đ" }
+    { name: { vi: "Lộ trình Data Analyst", en: "Data Analyst path" }, includes: { vi: "Data Analyst + SQL/BI + Career", en: "Data Analyst + SQL/BI + Career" }, price: "12.900.000đ", old: "29.900.000đ" }
   ],
 
   // Student-friendly offers & discounts (stackable rules described per card)
@@ -907,12 +1786,13 @@ const DATA = {
   ],
 
   schedule: [
+    { id: "da", course: { vi: "Data Analyst: Phân tích dữ liệu", en: "Data Analyst" }, start: "08/07/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T2 · T4 · T6 — Ca 1 (18:00–20:00)", en: "Mon · Wed · Fri — Slot 1 (6:00–8:00 PM)" }, seats: { vi: "Còn 6 chỗ", en: "6 seats left" }, level: "open" },
     { id: "de", course: { vi: "Data Engineering Zero → Hero", en: "Data Engineering Zero → Hero" }, start: "15/07/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T3 · T5 — Ca 1 (18:00–20:00)", en: "Tue · Thu — Slot 1 (6:00–8:00 PM)" }, seats: { vi: "Còn 6 chỗ", en: "6 seats left" }, level: "open" },
+    { id: "ds", course: { vi: "AI & Data Scientist", en: "AI & Data Scientist" }, start: "12/08/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T3 · T5 — Ca 2 (20:00–22:00)", en: "Tue · Thu — Slot 2 (8:00–10:00 PM)" }, seats: { vi: "Còn 5 chỗ", en: "5 seats left" }, level: "open" },
     { id: "ml", course: { vi: "Machine Learning thực chiến", en: "Practical Machine Learning" }, start: "22/07/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T3 · T5 — Ca 2 (20:00–22:00)", en: "Tue · Thu — Slot 2 (8:00–10:00 PM)" }, seats: { vi: "Còn 4 chỗ", en: "4 seats left" }, level: "open" },
     { id: "ai", course: { vi: "AI Engineer: LLM & RAG", en: "AI Engineer: LLM & RAG" }, start: "05/08/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T3 · T5 — Ca 1 (18:00–20:00)", en: "Tue · Thu — Slot 1 (6:00–8:00 PM)" }, seats: { vi: "Còn 8 chỗ", en: "8 seats left" }, level: "open" },
-    { id: "ds", course: { vi: "Data Science nền tảng", en: "Data Science Foundations" }, start: "12/08/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T2 · T4 · T6 — Ca 1 (18:00–20:00)", en: "Mon · Wed · Fri — Slot 1 (6:00–8:00 PM)" }, seats: { vi: "Sắp đầy · 2 chỗ", en: "Almost full · 2 seats" }, level: "almost" },
     { id: "mlops", course: { vi: "MLOps & Deployment", en: "MLOps & Deployment" }, start: "19/08/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T2 · T4 · T6 — Ca 2 (20:00–22:00)", en: "Mon · Wed · Fri — Slot 2 (8:00–10:00 PM)" }, seats: { vi: "Còn chỗ", en: "Seats available" }, level: "open" },
-    { id: "dl", course: { vi: "Deep Learning với PyTorch", en: "Deep Learning with PyTorch" }, start: "02/09/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T3 · T5 — Ca 2 (20:00–22:00)", en: "Tue · Thu — Slot 2 (8:00–10:00 PM)" }, seats: { vi: "Mở đăng ký", en: "Now open" }, level: "open" },
+    { id: "pyda", course: { vi: "Python for Data Analysis", en: "Python for Data Analysis" }, start: "10/07/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T2 · T4 · T6 — Ca 1 (18:00–20:00)", en: "Mon · Wed · Fri — Slot 1 (6:00–8:00 PM)" }, seats: { vi: "Mở đăng ký", en: "Now open" }, level: "open" },
     { id: "de", course: { vi: "Data Engineering Zero → Hero", en: "Data Engineering Zero → Hero" }, start: "18/07/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T7 · CN — cả ngày (09:00–17:00)", en: "Sat · Sun — full day (9:00 AM–5:00 PM)" }, seats: { vi: "Còn 5 chỗ", en: "5 seats left" }, level: "open" },
     { id: "ml", course: { vi: "Machine Learning thực chiến", en: "Practical Machine Learning" }, start: "25/07/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T7 · CN — cả ngày (09:00–17:00)", en: "Sat · Sun — full day (9:00 AM–5:00 PM)" }, seats: { vi: "Còn 7 chỗ", en: "7 seats left" }, level: "open" }
   ],
@@ -2096,12 +2976,13 @@ function renderChrome() {
             <div>
               <h5 data-i18n="footer.courses"></h5>
               <ul>
+                <li><a href="course.html?id=da" data-i18n="footer.c_da"></a></li>
                 <li><a href="course.html?id=de" data-i18n="footer.c_de"></a></li>
+                <li><a href="course.html?id=ds" data-i18n="footer.c_ds"></a></li>
                 <li><a href="course.html?id=ml" data-i18n="footer.c_ml"></a></li>
                 <li><a href="course.html?id=ai" data-i18n="footer.c_ai"></a></li>
-                <li><a href="course.html?id=ds" data-i18n="footer.c_ds"></a></li>
                 <li><a href="course.html?id=mlops" data-i18n="footer.c_mlops"></a></li>
-                <li><a href="course.html?id=dl" data-i18n="footer.c_dl"></a></li>
+                <li><a href="course.html?id=pyda" data-i18n="footer.c_pyda"></a></li>
               </ul>
             </div>
             <div>
