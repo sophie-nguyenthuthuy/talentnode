@@ -928,12 +928,12 @@ const DATA = {
   ],
 
   schedule: [
-    { course: { vi: "Data Engineering Zero → Hero", en: "Data Engineering Zero → Hero" }, start: "15/07/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T3 · T5 — 19:30", en: "Tue · Thu — 7:30 PM" }, seats: { vi: "Còn 6 chỗ", en: "6 seats left" }, level: "open" },
-    { course: { vi: "Machine Learning thực chiến", en: "Practical Machine Learning" }, start: "22/07/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T7 · CN — 09:00", en: "Sat · Sun — 9:00 AM" }, seats: { vi: "Còn 4 chỗ", en: "4 seats left" }, level: "open" },
-    { course: { vi: "AI Engineer: LLM & RAG", en: "AI Engineer: LLM & RAG" }, start: "05/08/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T2 · T4 — 19:00", en: "Mon · Wed — 7:00 PM" }, seats: { vi: "Còn 8 chỗ", en: "8 seats left" }, level: "open" },
-    { course: { vi: "Data Science nền tảng", en: "Data Science Foundations" }, start: "12/08/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T3 · T5 — 19:30", en: "Tue · Thu — 7:30 PM" }, seats: { vi: "Sắp đầy · 2 chỗ", en: "Almost full · 2 seats" }, level: "almost" },
-    { course: { vi: "MLOps & Deployment", en: "MLOps & Deployment" }, start: "19/08/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T7 — 09:00", en: "Sat — 9:00 AM" }, seats: { vi: "Còn chỗ", en: "Seats available" }, level: "open" },
-    { course: { vi: "Deep Learning với PyTorch", en: "Deep Learning with PyTorch" }, start: "02/09/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T4 · T6 — 19:00", en: "Wed · Fri — 7:00 PM" }, seats: { vi: "Mở đăng ký", en: "Now open" }, level: "open" }
+    { id: "de", course: { vi: "Data Engineering Zero → Hero", en: "Data Engineering Zero → Hero" }, start: "15/07/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T3 · T5 — 19:30", en: "Tue · Thu — 7:30 PM" }, seats: { vi: "Còn 6 chỗ", en: "6 seats left" }, level: "open" },
+    { id: "ml", course: { vi: "Machine Learning thực chiến", en: "Practical Machine Learning" }, start: "22/07/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T3 · T5 — 19:30", en: "Tue · Thu — 7:30 PM" }, seats: { vi: "Còn 4 chỗ", en: "4 seats left" }, level: "open" },
+    { id: "ai", course: { vi: "AI Engineer: LLM & RAG", en: "AI Engineer: LLM & RAG" }, start: "05/08/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T3 · T5 — 19:30", en: "Tue · Thu — 7:30 PM" }, seats: { vi: "Còn 8 chỗ", en: "8 seats left" }, level: "open" },
+    { id: "ds", course: { vi: "Data Science nền tảng", en: "Data Science Foundations" }, start: "12/08/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T2 · T4 · T6 — 19:00", en: "Mon · Wed · Fri — 7:00 PM" }, seats: { vi: "Sắp đầy · 2 chỗ", en: "Almost full · 2 seats" }, level: "almost" },
+    { id: "mlops", course: { vi: "MLOps & Deployment", en: "MLOps & Deployment" }, start: "19/08/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T2 · T4 · T6 — 19:00", en: "Mon · Wed · Fri — 7:00 PM" }, seats: { vi: "Còn chỗ", en: "Seats available" }, level: "open" },
+    { id: "dl", course: { vi: "Deep Learning với PyTorch", en: "Deep Learning with PyTorch" }, start: "02/09/2026", mode: { vi: "Online", en: "Online" }, time: { vi: "T3 · T5 — 19:30", en: "Tue · Thu — 7:30 PM" }, seats: { vi: "Mở đăng ký", en: "Now open" }, level: "open" }
   ],
 
   posts: [
@@ -2252,7 +2252,7 @@ function renderDynamic() {
       .map(
         (s) => `
       <div class="sched-item reveal">
-        <div class="sched-course">${T(s.course)}</div>
+        <div class="sched-course">${s.id ? `<a href="course.html?id=${s.id}">${T(s.course)}</a>` : T(s.course)}</div>
         <div class="sched-cell"><span class="sc-label">${cStart}</span>${s.start}</div>
         <div class="sched-cell"><span class="sc-label">${cMode}</span>${T(s.mode)}</div>
         <div class="sched-cell"><span class="sc-label">${cTime}</span>${T(s.time)}</div>
