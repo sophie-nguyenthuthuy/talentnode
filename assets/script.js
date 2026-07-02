@@ -148,7 +148,7 @@ const I18N = {
     "contactPage.h1b": "TalentNode",
     "contactPage.p": "Có câu hỏi về khóa học, học phí hay lộ trình? Nhắn cho chúng tôi — phản hồi trong vòng 24 giờ.",
     "contact.addrT": "Địa chỉ",
-    "contact.addrV": "Tầng 5, Tòa nhà Innovation, Cầu Giấy, Hà Nội",
+    "contact.addrV": "Bách Khoa, Hà Nội",
     "contact.phoneT": "Điện thoại / Zalo",
     "contact.emailT": "Email",
     "contact.hoursT": "Giờ làm việc",
@@ -357,7 +357,7 @@ const I18N = {
     "contactPage.h1b": "TalentNode",
     "contactPage.p": "Questions about courses, tuition or your path? Message us — we reply within 24 hours.",
     "contact.addrT": "Address",
-    "contact.addrV": "5th Floor, Innovation Tower, Cau Giay, Hanoi",
+    "contact.addrV": "Bach Khoa, Hanoi",
     "contact.phoneT": "Phone / Zalo",
     "contact.emailT": "Email",
     "contact.hoursT": "Working hours",
@@ -2054,10 +2054,10 @@ function renderChrome() {
         url: SITE_URL,
         logo: SITE_URL + "assets/og-cover.png",
         description: "Trung tâm đào tạo Data Engineering, Machine Learning và AI theo dự án thực chiến tại Hà Nội.",
-        email: "hello@talentnode.vn",
-        telephone: "+842412345678",
+        email: "sophie.nguyenthuthuy@gmail.com",
+        telephone: "+84925629416",
         areaServed: "VN",
-        address: { "@type": "PostalAddress", addressLocality: "Cầu Giấy", addressRegion: "Hà Nội", addressCountry: "VN" }
+        address: { "@type": "PostalAddress", addressLocality: "Bách Khoa", addressRegion: "Hà Nội", addressCountry: "VN" }
       },
       { "@type": "WebSite", "@id": SITE_URL + "#site", url: SITE_URL, name: "TalentNode", inLanguage: ["vi", "en"], publisher: { "@id": SITE_URL + "#org" } }
     ]
@@ -2126,8 +2126,8 @@ function renderChrome() {
             <div>
               <h5 data-i18n="footer.contactH"></h5>
               <ul>
-                <li><a href="mailto:hello@talentnode.vn">hello@talentnode.vn</a></li>
-                <li><a href="tel:+842412345678">024 1234 5678</a></li>
+                <li><a href="mailto:sophie.nguyenthuthuy@gmail.com">sophie.nguyenthuthuy@gmail.com</a></li>
+                <li><a href="tel:+84925629416">0925 629 416</a></li>
                 <li><a href="contact.html" data-i18n="contact.addrV"></a></li>
               </ul>
             </div>
