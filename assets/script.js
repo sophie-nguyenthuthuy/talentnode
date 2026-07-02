@@ -198,6 +198,12 @@ const I18N = {
     "footer.desc": "Trung tâm đào tạo Data, AI và Machine Learning theo dự án thực chiến. Học để đi làm.",
     "footer.explore": "Khám phá",
     "footer.courses": "Khóa học",
+    "footer.c_de": "Data Engineering Zero → Hero",
+    "footer.c_ml": "Machine Learning thực chiến",
+    "footer.c_ai": "AI Engineer: LLM & RAG",
+    "footer.c_ds": "Data Science nền tảng",
+    "footer.c_mlops": "MLOps & Deployment",
+    "footer.c_dl": "Deep Learning với PyTorch",
     "footer.contactH": "Liên hệ",
     "footer.follow": "Theo dõi",
     "footer.rights": "© 2026 TalentNode. Bảo lưu mọi quyền.",
@@ -401,6 +407,12 @@ const I18N = {
     "footer.desc": "A project-based Data, AI and Machine Learning training center. Learn to get hired.",
     "footer.explore": "Explore",
     "footer.courses": "Courses",
+    "footer.c_de": "Data Engineering Zero → Hero",
+    "footer.c_ml": "Practical Machine Learning",
+    "footer.c_ai": "AI Engineer: LLM & RAG",
+    "footer.c_ds": "Data Science Foundations",
+    "footer.c_mlops": "MLOps & Deployment",
+    "footer.c_dl": "Deep Learning with PyTorch",
     "footer.contactH": "Contact",
     "footer.follow": "Follow",
     "footer.rights": "© 2026 TalentNode. All rights reserved.",
@@ -2103,10 +2115,12 @@ function renderChrome() {
             <div>
               <h5 data-i18n="footer.courses"></h5>
               <ul>
-                <li><a href="courses.html" data-i18n="filter.data"></a></li>
-                <li><a href="courses.html" data-i18n="filter.ml"></a></li>
-                <li><a href="courses.html" data-i18n="filter.ai"></a></li>
-                <li><a href="courses.html" data-i18n="filter.ds"></a></li>
+                <li><a href="course.html?id=de" data-i18n="footer.c_de"></a></li>
+                <li><a href="course.html?id=ml" data-i18n="footer.c_ml"></a></li>
+                <li><a href="course.html?id=ai" data-i18n="footer.c_ai"></a></li>
+                <li><a href="course.html?id=ds" data-i18n="footer.c_ds"></a></li>
+                <li><a href="course.html?id=mlops" data-i18n="footer.c_mlops"></a></li>
+                <li><a href="course.html?id=dl" data-i18n="footer.c_dl"></a></li>
               </ul>
             </div>
             <div>
