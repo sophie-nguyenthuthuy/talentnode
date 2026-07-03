@@ -3,7 +3,7 @@
 /* ===== Meta Pixel (Facebook) — retargeting & conversion tracking =====
    Thay "PIXEL_ID_HERE" bằng Pixel ID thật (15-16 chữ số) lấy từ
    Facebook Events Manager. Khi còn placeholder, pixel sẽ KHÔNG chạy. */
-const META_PIXEL_ID = "PIXEL_ID_HERE";
+const META_PIXEL_ID = "1418956713408003";
 (function initMetaPixel() {
   if (!META_PIXEL_ID || META_PIXEL_ID.indexOf("PIXEL_ID") !== -1) return; // demo mode
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
