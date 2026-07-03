@@ -1,5 +1,20 @@
 /* ===== TalentNode — shared JS: i18n, nav, filters, forms, reveal ===== */
 
+/* ===== Meta Pixel (Facebook) — retargeting & conversion tracking =====
+   Thay "PIXEL_ID_HERE" bằng Pixel ID thật (15-16 chữ số) lấy từ
+   Facebook Events Manager. Khi còn placeholder, pixel sẽ KHÔNG chạy. */
+const META_PIXEL_ID = "PIXEL_ID_HERE";
+(function initMetaPixel() {
+  if (!META_PIXEL_ID || META_PIXEL_ID.indexOf("PIXEL_ID") !== -1) return; // demo mode
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', META_PIXEL_ID);
+  fbq('track', 'PageView');
+})();
+
 const I18N = {
   vi: {
     "nav.home": "Trang chủ",
@@ -6692,6 +6707,11 @@ document.addEventListener("DOMContentLoaded", () => {
         } finally {
           if (btn) btn.disabled = false;
         }
+      }
+      // Meta Pixel conversion event (fires only when pixel is live)
+      if (window.fbq) {
+        const src = (form.querySelector('input[name="_source"]') || {}).value || "form";
+        window.fbq("track", "Lead", { content_name: src });
       }
       if (msg) { msg.style.display = "block"; msg.scrollIntoView({ behavior: "smooth", block: "center" }); }
       form.reset();
